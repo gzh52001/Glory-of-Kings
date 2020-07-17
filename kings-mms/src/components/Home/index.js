@@ -7,6 +7,11 @@ import Headerr from '../Header'
 import Siderr from '../Sider'
 import Contentt from '../Content'
 class Home extends Component{
+    constructor(){
+        super()
+        this.state = {
+        }
+    }
     componentDidMount(){
         
     }
@@ -35,4 +40,4 @@ class Home extends Component{
         )
     }
 }
-export default Home
+export default withLogin(Home)

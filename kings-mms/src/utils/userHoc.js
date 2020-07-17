@@ -1,7 +1,8 @@
 import React from 'react'
 import { message } from 'antd'
-import {withRouter} from 'react-router-dom'
-import Login from '../components/Login'
+import {Redirect} from 'react-router-dom'
+
+
 //反向继承实现拦截，登录方可访问
 export function withLogin (InnerComponent) {
     return class OuterComponent extends InnerComponent{
@@ -12,6 +13,10 @@ export function withLogin (InnerComponent) {
                 this.state = {}
             }
             this.state.login = false
+            // this.state = {
+            //     login:false, 
+            // }
+            // console.log(super(props));
         }
         componentDidMount(){
             let userInfo = localStorage.getItem('userInfo')
@@ -26,24 +31,23 @@ export function withLogin (InnerComponent) {
             }
             //固定写法
             super.componentDidMount()
+            // console.log(super())
         }
-        info = () => {
-            message.info('请先登陆哦');
-            const {history} = this.props
-            history.push('/login')
-            // console.log(history)
-            //this.props.history.push('/login')
-          }
         render(){
             const {login} = this.state
+            const {history} = this.props
             console.log(login)
             if(login){
+                console.log(999)
                 return super.render()
             }
             return <div>
                 {
-                    this.info()
-                }
+                    console.log('先登陆')
+                }        
+                先登陆先登陆先登陆先登陆先登陆先登
+                陆先登陆先登陆先登陆先登陆先登陆先
+                登陆先登陆先登陆先登陆先登陆                      
             </div>
         }
     }
