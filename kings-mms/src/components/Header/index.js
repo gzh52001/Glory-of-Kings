@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Layout,  Breadcrumb,Row, Col,Button, Menu,Dropdown,Avatar } from 'antd'
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons'
+import { Layout,Row, Col, Menu,Dropdown,Avatar } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import './Header.scss'
 

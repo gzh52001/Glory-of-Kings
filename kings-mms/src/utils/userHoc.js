@@ -1,6 +1,4 @@
 import React from 'react'
-import { message } from 'antd'
-import {Redirect} from 'react-router-dom'
 
 
 //反向继承实现拦截，登录方可访问
@@ -20,10 +18,10 @@ export function withLogin (InnerComponent) {
         }
         componentDidMount(){
             let userInfo = localStorage.getItem('userInfo')
-            console.log(userInfo)
+            // console.log(userInfo)
             if(userInfo){
                 //用户已登录，打开开关
-                console.log(666)
+                // console.log(666)
                 this.setState({
                     
                     login:true
@@ -36,9 +34,9 @@ export function withLogin (InnerComponent) {
         render(){
             const {login} = this.state
             const {history} = this.props
-            console.log(login)
+            // console.log(login)
             if(login){
-                console.log(999)
+                // console.log(999)
                 return super.render()
             }
             return <div>

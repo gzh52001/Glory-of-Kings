@@ -1,11 +1,53 @@
-import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd'
+import React,{Component} from 'react';
+import {Route,withRouter} from 'react-router-dom'
+import { Layout, Menu} from 'antd'
 import { UserAddOutlined, ShopOutlined, ShoppingOutlined,UsergroupAddOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
-
-const { SubMenu } = Menu
-const { Header, Content, Sider } = Layout
-function Siderr(){
+import Admin from '../../pages/Admin'
+import User from '../../pages/User'
+import Shop from '../../pages/Shop'
+import ShopType from '../../pages/ShopType'
+const {Sider } = Layout
+class Siderr extends Component{
+  constructor(){
+    super()
+    this.state = {
+      siderList:[
+        {
+          key:'1',
+          icon:<UserAddOutlined />,
+          text:'管理员信息管理',
+          path:'/home/admin'
+        },
+        {
+          key:'2',
+          icon:<ShopOutlined />,
+          text:'商品类型管理',
+          path:'/home/shoptype'
+        },
+        {
+          key:'3',
+          icon:<ShoppingOutlined />,
+          text:'商品数据管理',
+          path:'/home/shop'
+        },
+        {
+          key:'4',
+          icon:<UsergroupAddOutlined />,
+          text:'用户信息管理',
+          path:'/home/user'
+        }
+      ]
+    }
+  }
+  Jump = (path) =>{
+    // console.log(path)
+    const {history} = this.props
+    // console.log(this.props);
+    history.push(path)
+  }
+  render(){
+    const {siderList} = this.state
     return(
         <Sider width={200} className="site-layout-background">
         <Menu
@@ -14,32 +56,18 @@ function Siderr(){
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
         >
-          <SubMenu key="sub1" icon={<UserAddOutlined />} title="管理员信息管理">
-            <Menu.Item key="1">option1</Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub2" icon={<ShopOutlined />} title="商品类型管理">
-            <Menu.Item key="5">option5</Menu.Item>
-            <Menu.Item key="6">option6</Menu.Item>
-            <Menu.Item key="7">option7</Menu.Item>
-            <Menu.Item key="8">option8</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub3" icon={<ShoppingOutlined />} title="商品数据管理">
-            <Menu.Item key="9">option9</Menu.Item>
-            <Menu.Item key="10">option10</Menu.Item>
-            <Menu.Item key="11">option11</Menu.Item>
-            <Menu.Item key="12">option12</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub4" icon={<UsergroupAddOutlined />} title="用户信息管理">
-            <Menu.Item key="9">option13</Menu.Item>
-            <Menu.Item key="10">option14</Menu.Item>
-            <Menu.Item key="11">option15</Menu.Item>
-            <Menu.Item key="12">option16</Menu.Item>
-          </SubMenu>
+          {
+            siderList.map(item =>
+            <Menu.Item key={item.key} icon={item.icon} onClick={this.Jump.bind(null,item.path)}>{item.text}</Menu.Item>
+              )
+          }
         </Menu>
+        <Route path='/admin' component={Admin} />
+        <Route path='/user' component={User} />
+        <Route path='/shop' component={Shop} />
+        <Route path='/shoptype' component={ShopType} />
       </Sider>
     )
+    }
 }
-export default Siderr
+export default withRouter(Siderr)
