@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
-import { } from 'antd';
-import {} from '@ant-design/icons';
+class Home extends Component {
+    render() {
+        return (
+            <div>
+                首页
+            </div>
+        )
+    }
+}
 
-import 'antd/dist/antd.css'
+export default Home;

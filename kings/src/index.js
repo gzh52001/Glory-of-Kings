@@ -4,12 +4,11 @@ import { HashRouter, BrowserRouter } from 'react-router-dom'
 
 import App from './App';
 
-// const Router = process.env.NODE_ENV === 'production' ? BrowserRouter : HashRouter;
+const Router = process.env.NODE_ENV === 'production' ? BrowserRouter : HashRouter;
 
 ReactDOM.render(
-  // <Router>
+  <Router>
     <App />
-  // </Router>
-  ,
+  </Router>,
   document.querySelector('#root')
 )

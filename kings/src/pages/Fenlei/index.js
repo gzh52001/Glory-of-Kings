@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Login extends Component {
+class Fenlei extends Component {
     render() {
         return (
             <div>
-                登录
+                分类
             </div>
         )
     }
 }
 
-export default Login;
+export default Fenlei;
