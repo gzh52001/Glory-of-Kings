@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom'
 import { Layout, Menu, Breadcrumb } from 'antd'
 import 'antd/dist/antd.css'
+import './Home.scss'
 import { withLogin } from '../../utils/userHoc'
 import Headerr from '../Header'
 import Siderr from '../Sider'
