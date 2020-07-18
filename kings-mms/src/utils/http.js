@@ -2,7 +2,7 @@
  * 封装ajax请求
  * fetch(url,options)
  */
-let baseUrl = process.env.NODE_ENV === 'development' ? 'http://10.3.141.53:3009' : ''
+let baseUrl = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:3009' : ''
 //
 export async function request(url, data = {}, options = {}) {
     if(options.baseUrl){
