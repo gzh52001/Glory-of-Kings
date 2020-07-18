@@ -67,6 +67,7 @@ class Admin extends Component {
         }
 
     //ajax请求数据渲染列表
+    //
     
     render() {
         const { columns } = this.state
