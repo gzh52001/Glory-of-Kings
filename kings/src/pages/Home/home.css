@@ -24,6 +24,7 @@ body {
       -ms-flex: 1;
           flex: 1;
   overflow-y: auto;
+  margin-bottom: 50px;
 }
 
 .box .main header {
