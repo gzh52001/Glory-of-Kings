@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Table,Button,Space,Form, Input, Radio } from 'antd';
+import { Table,Button,Space,Form, Input, Radio,message,Modal } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons'
 import http,{request} from '../../utils/http';
 import './Admin.scss'
 //import reqwest from 'reqwest'
@@ -53,31 +54,40 @@ class Admin extends Component {
                     title: '操作',
                     dataIndex: '',
                     key: 'x',
-                    render: () => <Space size="middle">
+                    render: (text,record,index) => <Space size="middle">
                     <a>编辑</a>
-                    <a>删除</a>
+                    <a onClick={this.delItem.bind(null,record)}>删除</a>
                   </Space>,
                     width: 120,
-                }
-                
+                }              
             ],
             data: [],
             username:'',//账户受控
-            name:''//姓名受控
+            name:'',//姓名受控
+            visible: false
         }
-        async componentDidMount(){
-            const {data} = await http.get('/admin/adminlist')
-            console.log(data)
+    componentDidMount(){
+        //包含搜索的ajax请求，数据列表渲染        
+        this.search()   
+    }
+    search = async() =>{
+        const {username,name } = this.state     
+        const data = await http.get('/admin/adminlist',{
+            username,
+            name
+        })
+        if(data.flag){
             
-            // console.log(data[0].username)
-            this.setState({
-                data
-            })
+        }else{
+            message.warning('查无此数据!')
         }
-
-    //ajax请求数据渲染列表
-    //
-    
+        // console.log('参数'+username+name)
+        // console.log(this.props)
+        this.setState({
+            data:data.data
+        })
+        // console.log('触发了')
+    }
     //账户input受控
     changeUserName = (e) =>{
         this.setState({
@@ -97,10 +107,28 @@ class Admin extends Component {
             name:''
         })
       }
+    //功能：删除某条数据
+    delItem=(record)=> {
+        Modal.confirm({
+          title: '提示!',
+          icon: <ExclamationCircleOutlined />,
+          content: '您确定要删除吗？',
+          okText: '确认',
+          cancelText: '取消',
+          onOk:async() =>{
+            let d = await http.remove('/admin/del/'+ record.id)
+            if(d.flag){
+                message.success('删除成功!')
+                this.search()
+            }else{
+                message.error('删除失败!')
+                } 
+            }
+        });
+      }
     render() {
         const { columns,username,name } = this.state
         const { data } = this.state
-        const { Column, ColumnGroup } = Table
         return (
             <div>
                 {/* 搜索表单 */}
@@ -112,7 +140,7 @@ class Admin extends Component {
                         <Input ref={(ele) => { this.name = ele}} value={name} onChange={this.changeName} placeholder="请输入所需查询的姓名" />
                     </Form.Item>
                     <Form.Item className='btn'>
-                        <Button type="primary">查询</Button>
+                        <Button type="primary" onClick={this.search}>查询</Button>
                         <Button type="primary">新增</Button>
                         <Button type="primary" onClick={this.onReset}>重置</Button>
                     </Form.Item>
@@ -121,7 +149,7 @@ class Admin extends Component {
                     columns={columns}
                     dataSource={data}
                     pagination={{
-                        pageSize: 20,
+                        pageSize: 10,
                         position: ['bottomCenter'],
                         style: {
                             marginBottom: 0,
@@ -131,7 +159,6 @@ class Admin extends Component {
                     scroll={{ y: 240 }}
                     bordered={true}
                     scroll={{ y: 'calc(100vh - 40vh)' }}
-
                 />
             </div>
         )

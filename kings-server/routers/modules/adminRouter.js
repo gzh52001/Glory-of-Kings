@@ -207,12 +207,13 @@ router.put('/edit/:id', async (req, res) => {
     }
 });
 
-//需求：删除管理员 DELETE FROM userinf WHERE uid=24
+//需求：删除管理员 DELETE FROM admin WHERE id=
 router.delete('/del/:id', async (req, res) => {
-    let id = req.params.uid;//获取uid
+    let id = req.params.id;//获取uid
     try {
         // console.log(9999);
-        let sql = `DELETE FROM userinf WHERE id=${id}`;
+        let sql = `DELETE FROM admin WHERE id="${id}"`;
+        console.log(sql)
         let p = await query(sql);//[{},{}]
         // console.log(p);
         let inf = {};
@@ -277,36 +278,39 @@ router.delete('/delall/', async (req, res) => {
     }
 });
 
-//需求：查询管理员列表  分页查询 page:1 页码  size:5 每页5条 SELECT * FROM userinf LIMIT 5,5
+//需求：查询管理员列表(含条件查询)
 router.get('/adminlist', async (req, res) => {
-
-    // let { page, size } = req.query;
-    // page = page || 1;
-    // size = size || 5;
-
-    //SELECT * FROM userinf LIMIT 0,5  0-起始下标  5-5条数据
-    // let index = (page - 1) * size;
-    /*
-        page  size  index
-        1      5     0
-        2      5     5
-        3      5     10
-    */
-
+    // console.log(req.query);
+    let { username, name } = req.query
+    // console.log('参数' + username, name)
+    username = username ? username : ''
+    name = name ? name : ''
     try {
-        let sql = `SELECT * FROM admin`;
-        let p = await query(sql);//[{},{}]
-        // let sql2 = `SELECT * FROM admin`;
-        // let arr = await query(sql2);//所有的数据 []
+        // console.log(666);
+        let sql
+        if (!username && !name) {
+            sql = `SELECT * FROM admin`
+        } else if(username && !name){
+            sql = `SELECT * FROM admin WHERE username="${username}"`
+        } else if(!username && name){
+            sql = `SELECT * FROM admin WHERE name="${name}"`
+        }else {
+            sql = `SELECT * FROM admin WHERE username="${username}" AND name="${name}"`;
+        }
+        console.log(sql);
+        let p = await query(sql);
+        // console.log('sql' + sql)
+        // console.log(p)
+        //let sql2 = `SELECT * FROM admin`;
+        //let arr = await query(sql2);//所有的数据 []
         let inf = {};
         if (p.length) {
             inf = {
                 code: 2000,
                 flag: true,
                 message: '查询成功',
-                // total: arr.length,
-                // page,
-                // size,
+                username,
+                name,
                 data: p
             }
         } else {
@@ -319,6 +323,7 @@ router.get('/adminlist', async (req, res) => {
 
         res.send(inf);
     } catch (err) {
+        console.log(77889);
         let inf = {
             code: err.errno,
             flag: false,
