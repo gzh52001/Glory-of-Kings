@@ -79,6 +79,7 @@ body {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
       justify-content: center;
+  line-height: 12vw;
 }
 
 .list .class-tab ul li {
@@ -91,5 +92,90 @@ body {
   font-size: 3.73333vw;
   -ms-flex-pack: center;
   position: relative;
+  list-style: none;
+}
+
+.list .class-tab ul li .tab-filter {
+  color: #999;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.list .class-tab ul .one::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  content: " ";
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  border-right: 1px solid #eee;
+  top: 4vw;
+  bottom: 4vw;
+}
+
+.list .class-tab ul .two a span {
+  display: block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .class-tab ul .two a i {
+  margin-left: 1.33333vw;
+  width: 2vw;
+  height: 1.33333vw;
+  display: inline-block;
+  background-position: -47.86667vw -33.33333vw;
+  background: url("../../assets/xia_03.jpg") no-repeat;
+  background-size: 2vw 1.06667vw;
+}
+
+.list .class-tab ul .three a span {
+  display: block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .class-tab ul .three a i {
+  margin-left: 1.33333vw;
+  width: 2vw;
+  height: 1.33333vw;
+  display: inline-block;
+  background-position: -47.86667vw -33.33333vw;
+  background: url("../../assets/xia_03.jpg") no-repeat;
+  background-size: 2vw 1.06667vw;
+}
+
+.list .class-tab ul .four a span {
+  display: block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .class-tab ul .four a i {
+  margin-left: 1.33333vw;
+  width: 2vw;
+  height: 1.33333vw;
+  display: inline-block;
+  background-position: -47.86667vw -33.33333vw;
+  background: url("../../assets/xia_03.jpg") no-repeat;
+  background-size: 2vw 1.06667vw;
 }
 /*# sourceMappingURL=fenlei.css.map */
