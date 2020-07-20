@@ -1,0 +1,253 @@
+html,
+body {
+    height: 100%;
+    background: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+.page-wrap {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    // 头部导航
+    .fixedbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: vw(90);
+        z-index: 50;
+        position: relative;
+        background: #fff;
+
+        .back {
+            width: vw(80);
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            bottom: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+
+            i {
+                display: block;
+                width: vw(17);
+                height: vw(31);
+                background-position: vw(-432) vw(-24);
+                background: url('../../assets/jiantou_03.jpg') no-repeat;
+                background-size: vw(16) vw(31);
+            }
+        }
+
+        .cate {
+            text-align: center;
+            font-size: 0;
+            padding-left: vw(100);
+            padding-right: vw(100);
+
+            .item {
+                font-size: vw(30);
+                display: inline-block;
+                line-height: vw(90);
+                margin: 0 vw(40);
+                position: relative;
+            }
+
+            .item-cur:after {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: 1px;
+                content: " ";
+                -webkit-transform: scaleY(.5);
+                transform: scaleY(.5);
+                -webkit-transform-origin: 0 100%;
+                transform-origin: 0 100%;
+                bottom: vw(10);
+                left: vw(8);
+                right: vw(8);
+                border-bottom: 5px solid #ffd54f;
+                border-radius: 3px;
+            }
+
+            .cate-right {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: vw(140);
+                height: vw(90);
+                z-index: 10;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+
+                .cate-cart {
+                    width: vw(70);
+                    height: 100%;
+                    position: relative;
+                    display: block;
+
+                    i {
+                        margin: vw(26) 0 0 vw(10);
+                        display: block;
+                        width: vw(36);
+                        height: vw(36);
+                        background-position: vw(-719) vw(-131);
+                        background: url('../../assets/gwc_03.jpg') no-repeat;
+                        background-size: vw(36) vw(36);
+                    }
+                }
+
+                .cate-class {
+                    width: vw(70);
+                    height: 100%;
+                    position: relative;
+                    display: block;
+
+                    i {
+                        margin: vw(28) 0 0 vw(10);
+                        display: block;
+                        width: vw(36);
+                        height: vw(36);
+                        background-position: vw(-719) vw(-131);
+                        background: url('../../assets/fl_09.jpg') no-repeat;
+                        background-size: vw(36) vw(36);
+                    }
+                }
+            }
+        }
+
+    }
+
+    // main
+    .hasfixedbar {
+         flex: 1;
+        overflow-y: auto;
+        margin-bottom: 50px;
+
+        .am-wingblank {
+            margin: 0;
+        }
+
+        .am-wingblank-lg {
+            margin: 0;
+        }
+
+        .my-carousel .v-item {
+            height: vw(717);
+            line-height: vw(717);
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .good-info {
+            margin-left: 0;
+            padding-left: 0;
+            width: 100%;
+            height: auto;
+            position: relative;
+            background: pink;
+
+            .base {
+                padding: vw(20) vw(30) vw(30);
+                background: #fff;
+                position: relative;
+                height: auto;
+
+                .title {
+                    font-size: vw(36);
+                    color: #333;
+                    line-height: vw(40);
+                }
+
+                .sub-tit {
+                    margin: vw(15) 0 0;
+                    font-size: vw(28);
+                    line-height: vw(36);
+                    color: #999;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .price {
+                    margin-top: vw(15);
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    height: vw(50);
+
+                    .pribox {
+                        -webkit-box-sizing: border-box;
+                        box-sizing: border-box;
+                        -webkit-box-flex: 1;
+                        -ms-flex: 1;
+                        flex: 1;
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        align-items: center;
+                        height: 100%;
+
+                        span {
+                            margin-left: vw(-10);
+                            font-size: vw(56);
+                            color: #f7545f;
+                        }
+                    }
+                }
+            }
+        }
+
+        .img {
+            margin: vw(20) 0;
+            width: 100%;
+            height: vw(86);
+            background: url('../../assets/tp_14.jpg') no-repeat;
+            background-size: vw(750) vw(86);
+        }
+
+        .kb {
+            width: 100%;
+            height: vw(400);
+        }
+    }
+
+    // 底部
+    .good-action {
+        height: vw(99);
+        background: red;
+    }
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

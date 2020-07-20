@@ -9,121 +9,153 @@ body {
 }
 
 .box {
-  background: #fff;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.box header {
+.box .main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-y: auto;
+  margin-bottom: 50px;
+}
+
+.box .main header {
   height: 8.53333vw;
   width: 100%;
   background: #fff8e4;
 }
 
-.box header .ico-mall {
+.box .main header .ico-mall {
   width: 12.8vw;
   height: 8.53333vw;
   float: left;
 }
 
-.box header .ico-mall img {
+.box .main header .ico-mall img {
   width: 8.4vw;
   height: 4.93333vw;
   margin-top: 1.86667vw;
   margin-left: 2.8vw;
 }
 
-.box header .noticebox {
+.box .main header .noticebox {
   width: 78.26667vw;
   height: 8.53333vw;
   float: left;
 }
 
-.box header .noticebox .my-carousel .v-item {
+.box .main header .noticebox .my-carousel .v-item {
   height: 8.53333vw;
   line-height: 8.53333vw;
   font-size: 3.2vw;
 }
 
-.box header .ico-arrow {
+.box .main header .ico-arrow {
   width: 8.93333vw;
   height: 8.53333vw;
   float: left;
 }
 
-.box header .ico-arrow img {
+.box .main header .ico-arrow img {
   width: 2.93333vw;
   height: 2.93333vw;
   margin-top: 2.8vw;
   margin-left: 1.86667vw;
 }
 
-.box .slideshow {
+.box .main .slideshow {
   width: 100%;
   height: 44vw;
 }
 
-.box .slideshow .am-wingblank-lg {
+.box .main .slideshow .am-wingblank-lg {
   margin: 0;
 }
 
-.box .slideshow .am-wingblank-lg .my-carousel .v-item {
+.box .main .slideshow .am-wingblank-lg .my-carousel .v-item {
   width: 100vw;
   height: 44vw;
 }
 
-.box .slideshow .am-wingblank-lg .my-carousel .v-item img {
+.box .main .slideshow .am-wingblank-lg .my-carousel .v-item img {
   width: 100%;
   height: 100%;
 }
 
-.box .index-tab {
+.box .main .index-tab {
   width: 100vw;
   height: 24vw;
   background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.box .index-tab li {
+.box .main .index-tab li {
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
   font-size: 3.2vw;
   line-height: 3.2vw;
 }
 
-.box .index-tab li img {
+.box .main .index-tab li img {
   width: 12vw;
   height: 12vw;
   margin-bottom: 2.26667vw;
 }
 
-.box .listbox {
+.box .main .listbox {
   padding: 0vw 2.66667vw;
   background: #fff;
 }
 
-.box .listbox .list-tit {
+.box .main .listbox .list-tit {
   margin-top: 4.66667vw;
   height: 4.66667vw;
   line-height: 4.66667vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  justify-content: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   -webkit-box-align: center;
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
-.box .listbox .list-tit h3 {
+.box .main .listbox .list-tit h3 {
   color: #333;
   font-size: 4.8vw;
   font-weight: 400;
   position: relative;
 }
 
-.box .listbox .list-tit h3:before {
+.box .main .listbox .list-tit h3:before {
   position: absolute;
   top: 1.73333vw;
   left: -3.06667vw;
@@ -133,7 +165,7 @@ body {
   content: "";
 }
 
-.box .listbox .list-tit h3:after {
+.box .main .listbox .list-tit h3:after {
   position: absolute;
   top: 2.13333vw;
   right: -3.06667vw;
@@ -143,13 +175,13 @@ body {
   content: "";
 }
 
-.box .listbox .goods-list {
+.box .main .listbox .goods-list {
   margin-top: 4vw;
   margin-left: -1.33333vw;
   font-size: 0;
 }
 
-.box .listbox .goods-list li {
+.box .main .listbox .goods-list li {
   margin-bottom: 2.66667vw;
   padding-left: 1.33333vw;
   width: 50%;
@@ -161,21 +193,21 @@ body {
   border-radius: 1.33333vw;
 }
 
-.box .listbox .goods-list li .list-link {
+.box .main .listbox .goods-list li .list-link {
   display: block;
   width: 100%;
   height: auto;
   position: relative;
 }
 
-.box .listbox .goods-list li .list-link .list-img {
+.box .main .listbox .goods-list li .list-link .list-img {
   position: relative;
   z-index: 1;
   background: #eee;
   padding-top: 96.66666666666667%;
 }
 
-.box .listbox .goods-list li .list-link .list-img img {
+.box .main .listbox .goods-list li .list-link .list-img img {
   position: absolute;
   top: 0;
   right: 0;
@@ -186,7 +218,7 @@ body {
   height: 100%;
 }
 
-.box .listbox .goods-list li .list-link .list-bd {
+.box .main .listbox .goods-list li .list-link .list-bd {
   padding: 2.66667vw 2.4vw;
   height: 14.66667vw;
   position: relative;
@@ -203,11 +235,11 @@ body {
   background: #fff;
 }
 
-.box .listbox .goods-list li .list-link .list-bd .name {
+.box .main .listbox .goods-list li .list-link .list-bd .name {
   height: 10.66667vw;
 }
 
-.box .listbox .goods-list li .list-link .list-bd .name span {
+.box .main .listbox .goods-list li .list-link .list-bd .name span {
   font-size: 3.73333vw;
   line-height: 4.53333vw;
   color: #333;
@@ -218,19 +250,25 @@ body {
   text-overflow: ellipsis;
 }
 
-.box .listbox .goods-list li .list-link .list-bd .price {
+.box .main .listbox .goods-list li .list-link .list-bd .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   line-height: 4.26667vw;
 }
 
-.box .listbox .goods-list li .list-link .list-bd .price .new-pri {
+.box .main .listbox .goods-list li .list-link .list-bd .price .new-pri {
   font-size: 4vw;
   color: #f7545f;
 }
 
-.box .listbox .goods-list li:before {
+.box .main .listbox .goods-list li:before {
   position: absolute;
   right: 0;
   top: 0;
@@ -245,12 +283,12 @@ body {
   z-index: 3;
 }
 
-.box .ach-more {
+.box .main .ach-more {
   height: 11.73333vw;
   background: #fff;
 }
 
-.box .ach-more .bt {
+.box .main .ach-more .bt {
   width: 24vw;
   height: 6.4vw;
   margin-top: 2.66667vw;
@@ -259,8 +297,13 @@ body {
   font-size: 2.93333vw;
 }
 
-.box .ach-more .bt img {
+.box .main .ach-more .bt img {
   width: 2.66667vw;
   height: 2.66667vw;
   margin-left: 1.33333vw;
 }
+
+.box .bt {
+  z-index: 1000;
+}
+/*# sourceMappingURL=home.css.map */

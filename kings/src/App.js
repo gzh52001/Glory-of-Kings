@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import Fenlei from './pages/Fenlei';
 import Shopcart from './pages/Shopcart';
 import Mine from './pages/Mine';
-import Footer from './pages/Footer';
+import Detail from './pages/Detail';
 
 class App extends React.Component{
   render() {
@@ -21,11 +21,10 @@ class App extends React.Component{
               <Route path={'/Fenlei'} component={Fenlei}/>           
               <Route path={'/Shopcart'} component={Shopcart}/>
               <Route path={'/Mine'} component={Mine}/>
+              <Route path={'/Detail'} component={Detail}/>
               <Redirect from={'/'} to={'/Home'} exact/>
           </Switch>
-         <Footer/>
       </div>
-      
     );
   }
 }

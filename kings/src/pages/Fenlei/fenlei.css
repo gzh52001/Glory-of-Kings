@@ -1,0 +1,315 @@
+html,
+body {
+  height: 100%;
+  background: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  height: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.list .search-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 105;
+  width: 100%;
+  height: 11.73333vw;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.list .search-bar .btn-search {
+  margin: 2.66667vw;
+  dispaly: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 7.46667vw;
+  background: #f4f4f4;
+  border-radius: 3.73333vw;
+  font-size: 3.46667vw;
+  color: #ccc;
+  line-height: 7.46667vw;
+  text-indent: 7.06667vw;
+  position: relative;
+}
+
+.list .search-bar .btn-search:before {
+  content: "";
+  display: inline-block;
+  width: 3.73333vw;
+  height: 3.73333vw;
+  background: url("../../assets/ss_03.jpg") no-repeat;
+  background-size: 3.33333vw 3.33333vw;
+  position: absolute;
+  top: 50%;
+  margin-top: -1.86667vw;
+  left: 2vw;
+  z-index: 2;
+}
+
+.list .class-tab {
+  position: fixed;
+  top: 11.73333vw;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 12vw;
+  background: #fff;
+}
+
+.list .class-tab ul {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  line-height: 12vw;
+}
+
+.list .class-tab ul li {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 0;
+  font-size: 3.73333vw;
+  -ms-flex-pack: center;
+  position: relative;
+  list-style: none;
+}
+
+.list .class-tab ul li .tab-filter {
+  color: #999;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.list .class-tab ul .one::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  content: " ";
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  border-right: 1px solid #eee;
+  top: 4vw;
+  bottom: 4vw;
+}
+
+.list .class-tab ul .two a span {
+  display: block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .class-tab ul .two a i {
+  margin-left: 1.33333vw;
+  width: 2vw;
+  height: 1.33333vw;
+  display: inline-block;
+  background-position: -47.86667vw -33.33333vw;
+  background: url("../../assets/xia_03.jpg") no-repeat;
+  background-size: 2vw 1.06667vw;
+}
+
+.list .class-tab ul .three a span {
+  display: block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .class-tab ul .three a i {
+  margin-left: 1.33333vw;
+  width: 2vw;
+  height: 1.33333vw;
+  display: inline-block;
+  background-position: -47.86667vw -33.33333vw;
+  background: url("../../assets/xia_03.jpg") no-repeat;
+  background-size: 2vw 1.06667vw;
+}
+
+.list .class-tab ul .four a span {
+  display: block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .class-tab ul .four a i {
+  margin-left: 1.33333vw;
+  width: 2vw;
+  height: 1.33333vw;
+  display: inline-block;
+  background-position: -47.86667vw -33.33333vw;
+  background: url("../../assets/xia_03.jpg") no-repeat;
+  background-size: 2vw 1.06667vw;
+}
+
+.list .goods-listbox {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-y: auto;
+  margin-top: 26.4vw;
+  margin-bottom: 50px;
+}
+
+.list .goods-listbox .goods-list {
+  font-size: 0;
+}
+
+.list .goods-listbox .goods-list li {
+  margin-bottom: 2.66667vw;
+  padding-left: 1.33333vw;
+  width: 50%;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 1.33333vw;
+}
+
+.list .goods-listbox .goods-list li .list-link {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-img {
+  position: relative;
+  z-index: 1;
+  background: #eee;
+  padding-top: 96.66666666666667%;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-img img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-bd {
+  padding: 2.66667vw 2.4vw;
+  height: 14.66667vw;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-align: left;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  background: #fff;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-bd .name {
+  height: 10.66667vw;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-bd .name span {
+  font-size: 3.73333vw;
+  line-height: 4.53333vw;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-bd .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  line-height: 4.26667vw;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-bd .price .new-pri {
+  font-size: 4vw;
+  color: #f7545f;
+}
+
+.list .goods-listbox .goods-list li .list-link .list-bd .price .old-pri {
+  margin-left: 1.06667vw;
+  font-size: 3.46667vw;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.list .goods-listbox .goods-list li:before {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 1.33333vw;
+  height: 1px;
+  content: " ";
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  border-top: 1px solid #eee;
+  z-index: 3;
+}
+
+.list .bt {
+  z-index: 100;
+}
+/*# sourceMappingURL=fenlei.css.map */
