@@ -14,7 +14,7 @@ class Footer extends Component {
       }
       
       componentDidMount() {
-        console.log(this.props)
+        //console.log(this.props)
         const {location:{pathname}} = this.props;
          this.setState({
           selectedTab:pathname
@@ -29,6 +29,7 @@ class Footer extends Component {
                 unselectedTintColor="#949494"
                 tintColor="#333"
                 barTintColor="white"
+                background = "#fff"
                 // hidden={this.state.hidden}
                 >
                 <TabBar.Item

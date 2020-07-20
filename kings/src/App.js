@@ -2,7 +2,8 @@ import React from 'react';
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
 
 
-import './icon/icon/iconfont.css'
+import './icon/iconfont.css'
+// import './icon/iconfont.js'
 import './App.css';
 
 import Home from './pages/Home';
