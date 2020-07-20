@@ -1,0 +1,19 @@
+.header_t {
+  color: #fff;
+}
+
+.header {
+  height: 80px;
+  position: relative;
+}
+
+.header .logo {
+  width: 320px;
+  height: 60px;
+}
+
+.header .userInfo {
+  text-align: right;
+  margin-top: 5px;
+}
+/*# sourceMappingURL=Header.css.map */

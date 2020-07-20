@@ -1,0 +1,101 @@
+html,
+body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+.list {
+    height: 100%;
+    position: relative;
+
+    // 头部搜索框
+    .search-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 105;
+        width: 100%;
+        height: vw(88);
+        background: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        .btn-search {
+            margin: vw(20);
+            dispaly: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            height: vw(56);
+            background: #f4f4f4;
+            border-radius: vw(28);
+            font-size: vw(26);
+            color: #ccc;
+            line-height: vw(56);
+            text-indent: vw(53);
+            position: relative;
+        }
+
+        .btn-search:before {
+            content: "";
+            display: inline-block;
+            width: vw(28);
+            height: vw(28);
+            background: url('../../assets/ss_03.jpg') no-repeat;
+            background-size: vw(25) vw(25);
+            position: absolute;
+            top: 50%;
+            margin-top: vw(-14);
+            left: vw(15);
+            z-index: 2;
+        }
+    }
+
+    // 下拉菜单
+    .class-tab {
+        position: fixed;
+        top: vw(88);
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        height: vw(90);
+        background: #fff;
+        ul{
+            height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            li{
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-box-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+                width: 0;
+                font-size: vw(28);
+                -ms-flex-pack: center;
+                position: relative;
+            }
+            
+        }
+    }
+
+    // 商品列表
+    .goods-listbox {}
+}
