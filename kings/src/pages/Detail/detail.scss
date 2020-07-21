@@ -16,8 +16,6 @@ body {
 .page-wrap {
     height: 100%;
     position: relative;
-    display: flex;
-    flex-direction: column;
 
     // 头部导航
     .fixedbar {
@@ -27,7 +25,6 @@ body {
         top: 0;
         height: vw(90);
         z-index: 50;
-        position: relative;
         background: #fff;
 
         .back {
@@ -143,7 +140,7 @@ body {
 
     // main
     .hasfixedbar {
-         flex: 1;
+        // flex: 1;
         overflow-y: auto;
         margin-bottom: 50px;
         background: #f3f4f6;
@@ -248,7 +245,77 @@ body {
 
     // 底部
     .good-action {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
         height: vw(99);
-        background: red;
+        background: #fff;
+
+        .left {
+            display: flex;
+            justify-content: space-around;
+            width: vw(300);
+            height: 100%;
+            align-items: center;
+            float: left;
+
+            a {
+                .cell {
+                    span {
+                        display: inline-block;
+                        width: vw(38);
+                        height: vw(38);
+                        background: url('../../assets/home_03.jpg') no-repeat;
+                        background-size: vw(36) vw(38);
+                    }
+
+                    .kf {
+                        background: url('../../assets/kf_05.jpg') no-repeat;
+                        background-size: vw(36) vw(38);
+                    }
+
+                    .sc {
+                        background: url('../../assets/sc_07.jpg') no-repeat;
+                        background-size: vw(36) vw(38);
+                    }
+
+                    p {
+                        color: #000;
+                        font-size: vw(20);
+                        margin-top: vw(8);
+                    }
+                }
+
+            }
+        }
+
+        .right {
+            height: 100%;
+            float: left;
+            width: vw(450);
+
+            .jrgwc {
+                width: vw(225);
+                text-align: center;
+                line-height: vw(100);
+                font-size: vw(28);
+                color: #fff;
+                background: #333333;
+                float: left;
+
+            }
+
+            .ljgm {
+                width: vw(225);
+                height: 100%;
+                text-align: center;
+                line-height: vw(100);
+                font-size: vw(28);
+                color: #333333;
+                background: #ffd54f;
+                float: left;
+            }
+        }
     }
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+}

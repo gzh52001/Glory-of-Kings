@@ -48,7 +48,7 @@ class Detail extends React.Component {
                             <span>详情</span>
                         </div>
                         <div className="cate-right">
-                            <a href="" className="cate-cart">
+                            <a href="/Shopcart" className="cate-cart">
                                 <i></i>
                             </a>
                             <a href="" className="cate-class">
@@ -92,9 +92,36 @@ class Detail extends React.Component {
                     {/* 空白 */}
                     <div className="kb"></div>
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
                 {/* 底部 */}
-                <div className="good-action"></div>
+                <div className="good-action">
+                    <div className="left">
+                        <a href="/Home">
+                            <div className="cell">
+                                <span></span>
+                                <p>首页</p>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div className="cell">
+                                <span className="kf"></span>
+                                <p>客服</p>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div className="cell">
+                                <span className="sc"></span>
+                                <p>收藏</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div className="right">
+                        <div className="jrgwc">
+                            <span>加入购物车</span>
+                        </div>
+                        <div className="ljgm">立即购买</div>
+                    </div>
+                </div>
             </div>
         )
     }
