@@ -23,10 +23,11 @@ const router = express.Router();//router==app
 //需要：验证管理员是否存在 /user/checkname  一个请求里面只能有一个send否则会报错
 router.get('/checkname', async (req, res) => {
     // console.log(6666);
-    let { name } = req.query;
-    console.log(name);
+    let { username2 } = req.query;
+    // console.log('参数'+username2);
     try {
-        let sql = `SELECT * FROM admin WHERE username='${name}'`;
+        let sql = `SELECT * FROM admin WHERE username='${username2}'`;
+        console.log(sql);
         let p = await query(sql);//[{},{}]
         let inf = {}
         if (p.length) {
@@ -55,14 +56,30 @@ router.get('/checkname', async (req, res) => {
     }
 });
 
-//需求：注册  /user/reg
+//需求：管理员注册  /admin/reg
 router.post('/reg', async (req, res) => {
     // console.log(6666);
     // console.log(req.body);
-    let { name, pwd } = req.body;
+    let { username2, pwd,name2,age,phone,pay,address } = req.query;
+    // console.log(req.query)
+    // pwd == '' ? null : pwd
+    // name2 == '' ? null : name2
+    // age == '' ? null : age
+    // phone == '' ? null : phone
+    // pay == '' ? null : pay
+    // address == '' ? null : address
+    // if(age == ''){
+    //     age = null
+    // }
+    // if(pay == ''){
+    //     pay = null
+    // }
+    // if(address == ''){
+    //     address = null
+    // }
     // console.log(name, psw);
     try {
-        let sql = `INSERT INTO admin(username, pwd) VALUES('${name}','${pwd}')`;
+        let sql = `INSERT INTO admin(username, pwd,name,age,phone,pay,address) VALUES('${username2}','${pwd}','${name2}','${age}','${phone}','${pay}','${address}')`;
         let p = await query(sql);//[{},{}]
         let inf = {}
         if (p.affectedRows) { //受影响多少行 > 0 就是成功
@@ -161,25 +178,17 @@ router.get('/verify', (req, res) => {
 });
 
 //需求：修改信息 UPDATE userinf SET name='许仙',psw='222222' WHERE uid=24
-router.put('/edit/:id', async (req, res) => {
-    // console.log(6666);
+router.put('/edit', async (req, res) => {
     //name:账号  psw:密码  keep:是否要七天免登陆 true 就可以生成token
-    let obj = req.body; //{name:'小青',psw:'66778'}
-    // console.log(obj);
-    let str = '';
-    //拼接出sql语句想要的结构
-    for (let key in obj) {
-        str += key + '=' + `'${obj[key]}'` + ','
-    }
-    str = str.slice(0, -1);
-    // console.log(str);
-    let id = req.params.uid;//获取uid
-
+    let {id,username2,pwd,name2,age,phone,pay,address} = req.query;
+    // console.log('参数id'+id)
+    console.log('参数列表'+id,username2,pwd,name2,age,phone,pay,address)
     try {
         // console.log(9999);
-        let sql = `UPDATE admin SET ${str} WHERE id=${id}`;
+        let sql = `UPDATE admin SET username='${username2}',pwd='${pwd}',name='${name2}',age='${age}',phone='${phone}',pay='${pay}',address='${address}' WHERE id='${id}'`;
         let p = await query(sql);//[{},{}]
-        // console.log(p);
+        console.log('这是sql'+sql);
+        console.log('这是p'+p);
         let inf = {};
         if (p.affectedRows) {
             //修改成功
