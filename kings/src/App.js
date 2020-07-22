@@ -11,6 +11,8 @@ import Fenlei from './pages/Fenlei';
 import Shopcart from './pages/Shopcart';
 import Mine from './pages/Mine';
 import Detail from './pages/Detail';
+import Reg from './pages/Reg';
+import Login from './pages/Login';
 
 class App extends React.Component{
   render() {
@@ -22,6 +24,8 @@ class App extends React.Component{
               <Route path={'/Shopcart'} component={Shopcart}/>
               <Route path={'/Mine'} component={Mine}/>
               <Route path={'/Detail'} component={Detail}/>
+              <Route path={'/Reg'} component={Reg}/>
+              <Route path={'/Login'} component={Login}/>
               <Redirect from={'/'} to={'/Home'} exact/>
           </Switch>
       </div>
