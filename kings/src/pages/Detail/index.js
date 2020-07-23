@@ -219,23 +219,34 @@ class Detail extends React.Component {
             ],
             data: {
                 "checked": false,
-                "detail_id": 13,
-                "name": "云端筑梦师庄周印花T恤",
+                "detail_id": 2,
+                "name": "传说之刃花木兰Q版手办",
                 "img": [
-                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200608141216_17934.jpg",
-                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200608141224_47100.jpg",
-                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200608141231_80932.jpg",
-                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200608141236_82834.jpg",
-                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200608141303_17205.jpg"
+                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200612163212_26244.jpg",
+                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200612163217_87719.jpg",
+                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200612163221_51300.jpg",
+                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200612164516_37746.jpg",
+                    "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202006/20200612164522_52851.jpg"
                 ],
-                "pri": "138.00"
+                "pri": "168.00"
             },
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         // 发起ajax请求
-        console.log('Goods.props',this.props.match.params);
+        // console.log('Goods.props',this.props.match.params);
+        const id = this.props.match.params
+        const { list } = this.state
+        const a = list.filter(item => {
+            return item.detail_id == id.id
+        })
+        const [b] = a
+        this.setState({
+            data:b
+        })        
     }
+
+
     // 点击返回
     goBack = () => {
         window.history.back(-1)
