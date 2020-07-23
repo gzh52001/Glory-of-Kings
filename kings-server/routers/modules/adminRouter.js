@@ -27,8 +27,9 @@ router.get('/checkname', async (req, res) => {
     // console.log('参数'+username2);
     try {
         let sql = `SELECT * FROM admin WHERE username='${username2}'`;
-        console.log(sql);
+        // console.log(sql);
         let p = await query(sql);//[{},{}]
+        // console.log(p)
         let inf = {}
         if (p.length) {
             //查到数据：不能注册
@@ -56,7 +57,7 @@ router.get('/checkname', async (req, res) => {
     }
 });
 
-//需求：管理员注册  /admin/reg
+//需求：管理员新增  /admin/reg
 router.post('/reg', async (req, res) => {
     // console.log(6666);
     // console.log(req.body);
@@ -82,6 +83,7 @@ router.post('/reg', async (req, res) => {
         let sql = `INSERT INTO admin(username, pwd,name,age,phone,pay,address) VALUES('${username2}','${pwd}','${name2}','${age}','${phone}','${pay}','${address}')`;
         let p = await query(sql);//[{},{}]
         let inf = {}
+        console.log('p'+p);
         if (p.affectedRows) { //受影响多少行 > 0 就是成功
             inf = {
                 code: 2000,
@@ -106,36 +108,20 @@ router.post('/reg', async (req, res) => {
     }
 });
 
-//需要：登陆 /user/login
-router.get('/login', async (req, res) => {
-    // console.log(6666);
-    //name:账号  psw:密码  keep:是否要七天免登陆 true 就可以生成token
-    let { name, pwd, keep } = req.query;
+//需要：管理员登陆 /admin/login
+router.post('/login', async (req, res) => {
+    let { username, pwd } = req.query;
     try {
-        let sql = `SELECT * FROM admin WHERE username='${name}' and pwd='${pwd}'`;
+        let sql = `SELECT * FROM admin WHERE username='${username}' and pwd='${pwd}'`;
         let p = await query(sql);//[{},{}]
         let inf = {}
         if (p.length) {
-            //查到数据：可以登陆
-            let token = '';
-            if (keep == 'true') {
-                //保留7天
-                token = create(pwd);
-            } else {
-                token = create(pwd, 60 * 60 * 24);
-            }
-
             inf = {
                 code: 2000,
                 flag: true,
                 message: '登录成功',
-                data: {
-                    token
-                }
             }
         } else {
-            //查不到数据:不能登录
-
             inf = {
                 code: 3000,
                 flag: false,
@@ -177,9 +163,9 @@ router.get('/verify', (req, res) => {
     res.send(inf);
 });
 
-//需求：修改信息 UPDATE userinf SET name='许仙',psw='222222' WHERE uid=24
+//需求：管理员修改信息 UPDATE admin SET ? WHERE id=?
 router.put('/edit', async (req, res) => {
-    //name:账号  psw:密码  keep:是否要七天免登陆 true 就可以生成token
+
     let {id,username2,pwd,name2,age,phone,pay,address} = req.query;
     // console.log('参数id'+id)
     console.log('参数列表'+id,username2,pwd,name2,age,phone,pay,address)

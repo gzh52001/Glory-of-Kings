@@ -25,33 +25,7 @@ router.use((req, res, next) => {
 //use无论是什么请求都可以进入
 router.use('/admin', adminRouter);//启用子路由:use里面的函数是中间件
 //中间件本质上是函数，但是函数不一定是中间件 (req, res, next)
-//划分子路由
-/*
-    电商网：
-        * 用户管理 usersRouter.js
-            * 验证用户名是否存在
-            * 注册
-            * 登陆
-            * 验证token
-            * 修改信息
-            * 删除用户
-            * 删除多个用户
-            * 查询用户列表(分页)
-            * 查询uid为xx的用户信息
-        * 商品管理 goodsRouter.js
-            * 商品信息列表
-            * 查询gid为xx的商品
-            * 修改gid为xx的商品信息
-            * 删除gid的商品
-            * 删除多个商品
-            * 新增商品
-        * 订单管理 ordersRouter.js
-            * 新增订单
-            * 删除订单
-            * 修改订单
-            * 查询订单列表
-            * 查询某个订单
-*/
+
 
 //导出路由
 module.exports = router;

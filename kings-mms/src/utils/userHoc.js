@@ -1,8 +1,8 @@
 import React from 'react'
-
+import Login from '../components/Login'
 
 //反向继承实现拦截，登录方可访问
-export function withLogin (InnerComponent) {
+export function withLogin(InnerComponent) {
     return class OuterComponent extends InnerComponent{
         constructor(){
             super()
@@ -17,9 +17,9 @@ export function withLogin (InnerComponent) {
             // console.log(super(props));
         }
         componentDidMount(){
-            let userInfo = localStorage.getItem('userInfo')
+            let user_key = localStorage.getItem('user_key')
             // console.log(userInfo)
-            if(userInfo){
+            if(user_key){
                 //用户已登录，打开开关
                 // console.log(666)
                 this.setState({
@@ -38,15 +38,10 @@ export function withLogin (InnerComponent) {
             if(login){
                 // console.log(999)
                 return super.render()
+                history.push('/home')
+                
             }
-            return <div>
-                {
-                    console.log('先登陆')
-                }        
-                先登陆先登陆先登陆先登陆先登陆先登
-                陆先登陆先登陆先登陆先登陆先登陆先
-                登陆先登陆先登陆先登陆先登陆                      
-            </div>
+            return <Login />
         }
     }
 }

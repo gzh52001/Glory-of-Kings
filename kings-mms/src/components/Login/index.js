@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
-import {Form, Input, Button} from 'antd'
+import {Form, Input, Button,message} from 'antd'
 import {UserOutlined, LockOutlined} from '@ant-design/icons'
+import http,{request} from '../../utils/http';
 import {withRouter } from 'react-router-dom'
+import storage from '../../utils/storage';
 
 import './Login.scss'
 
@@ -27,21 +29,32 @@ class Login extends Component {
     }
 
     //登录
-    login = () =>{
+    login = async() =>{
         const {history} = this.props
-        let {username} = this.state
-        let {pwd} = this.state
-        let userInfo = localStorage.getItem('userInfo')
-        if(userInfo){
-            userInfo = JSON.parse(userInfo)
-            if(userInfo.username === username && userInfo.pwd === pwd){
-                alert('登录成功')
-                history.push('./home')
-            }else{
-                alert('用户名或密码错误!')
-            }
+        let {username,pwd} = this.state
+        //let userInfo = localStorage.getItem('userInfo')
+        // if(userInfo){
+        //     userInfo = JSON.parse(userInfo)
+        //     if(userInfo.username === username && userInfo.pwd === pwd){
+        //         alert('登录成功')
+        //         history.push('./home')
+        //     }else{
+        //         alert('用户名或密码错误!')
+        //     }
+        // }else{
+        //     alert('用户名不存在哦！请先注册')
+        // }
+        let data = await http.post('/admin/login',{
+            username,
+            pwd
+        })
+        if(data.flag){
+            message.success('登陆成功!')
+            //调用方法，存key
+            storage.saveUser(username)
+            history.push('./home')
         }else{
-            alert('用户名不存在哦！请先注册')
+            message.error('登陆失败!')
         }
     }
     render(){
