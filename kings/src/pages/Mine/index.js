@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid ,List} from 'antd-mobile';
 
 import './index.scss';
-
+import Footer from '../Footer';
 const Item = List.Item;
 
 class Mine extends Component {
@@ -129,6 +129,7 @@ class Mine extends Component {
                             onClick={() => {}}
                             >商城公告</Item>                          
                         </List>
+                        <Footer/>
                     </div> 
                 }
             </>
