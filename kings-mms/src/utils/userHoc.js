@@ -11,19 +11,14 @@ export function withLogin(InnerComponent) {
                 this.state = {}
             }
             this.state.login = false
-            // this.state = {
-            //     login:false, 
-            // }
-            // console.log(super(props));
         }
         componentDidMount(){
             let user_key = localStorage.getItem('user_key')
-            // console.log(userInfo)
+            // console.log(user_key)
             if(user_key){
                 //用户已登录，打开开关
                 // console.log(666)
-                this.setState({
-                    
+                this.setState({    
                     login:true
                 })
             }
@@ -32,8 +27,9 @@ export function withLogin(InnerComponent) {
             // console.log(super())
         }
         render(){
-            const {login} = this.state
-            const {history} = this.props
+            let {login} = this.state
+            let {history} = this.props
+            console.log(login)
             // console.log(login)
             if(login){
                 // console.log(999)
@@ -41,7 +37,13 @@ export function withLogin(InnerComponent) {
                 history.push('/home')
                 
             }
-            return <Login />
+            return <div>
+                先登录
+                先登录
+                先登录
+                先登录
+                先登录
+            </div>
         }
     }
 }
