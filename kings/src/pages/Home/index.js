@@ -119,9 +119,16 @@ class Home extends React.Component {
                         }
                     ]
                 }
-            ]
+            ],
         }
     }
+    goto = () => {
+        const { history } = this.props;
+        history.push({
+            pathname: '/Fenlei',
+        });
+    }
+   
     render() {
         const { img } = this.state
         const { home } = this.state
@@ -208,7 +215,7 @@ class Home extends React.Component {
                                 {
                                     item.commodity.map(
                                         ite =>
-                                            <li key={ite.name}>
+                                            <li key={ite.name} >
                                                 <div className="list-link">
                                                     <div className="list-img">
                                                         <img src={ite.img} />
@@ -231,7 +238,7 @@ class Home extends React.Component {
 
                     {/* 底部 */}
                     <div className="ach-more">
-                        <div className="bt">
+                        <div className="bt" onClick={this.goto}>
                             <span>查看全部商品</span>
                             <img src={require("../../assets/bottom_11.jpg")} />
                         </div>
@@ -239,9 +246,9 @@ class Home extends React.Component {
                 </div>
                 {/* 底部导航 */}
                 <div className="bt">
-                  <Footer />
+                    <Footer />
                 </div>
-                
+
             </div>
         )
     }

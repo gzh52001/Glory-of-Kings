@@ -122,6 +122,16 @@ class List extends React.Component {
             ]
         }
     }
+
+    // 点击跳转
+    goto = (shop_id) => {
+        const { history } = this.props;
+        history.push({
+            pathname: '/Detail/' + shop_id,
+            // search: '?id=' + id,
+        });
+    }
+
     render() {
         const { list } = this.state
         return (
@@ -135,7 +145,7 @@ class List extends React.Component {
                 <div className="class-tab">
                     <ul>
                         <li className="one">
-                            <a  className="tab-filter">默认</a>
+                            <a className="tab-filter">默认</a>
                         </li>
                         <li className="two">
                             <a className="tab-filter">
@@ -161,32 +171,16 @@ class List extends React.Component {
                 {/* 商品列表 */}
                 <div className="goods-listbox">
                     <ul className="goods-list">
-                        <li>
-                            <div className="list-link">
-                                <div className="list-img">
-                                    <img src='https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202001/20200114163344_50333.jpg' />
-                                </div>
-                                <div className="list-bd">
-                                    <div className="name">
-                                        <span>天美官方艺术典藏（修订版）</span>
-                                    </div>
-                                    <div className="price">
-                                        <p className="new-pri">¥ 158.00</p>
-                                        {/* <p className="old-pri">¥ 158.00</p> */}
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
                         {
-                            list.map(item=>
-                                <li key={item.shop_id}>
+                            list.map(item =>
+                                <li key={item.shop_id} onClick={this.goto.bind(null, item.shop_id)}>
                                     <div className="list-link">
                                         <div className="list-img">
                                             <img src={item.img} />
                                         </div>
                                         <div className="list-bd">
                                             <div className="name">
-                                            <span>{item.name}</span>
+                                                <span>{item.name}</span>
                                             </div>
                                             <div className="price">
                                                 <p className="new-pri">{item.new_pri}</p>
@@ -194,7 +188,7 @@ class List extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                            </li>)
+                                </li>)
                         }
                     </ul>
                 </div>

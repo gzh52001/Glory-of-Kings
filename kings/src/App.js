@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
 
 import './icon/iconfont.css'
@@ -14,23 +14,40 @@ import Detail from './pages/Detail';
 import Reg from './pages/Reg';
 import Login from './pages/Login';
 
-class App extends React.Component{
-  render() {
-    return (    
-      <div>       
-          <Switch>
-              <Route path={'/Home'} component={Home}/>
-              <Route path={'/Fenlei'} component={Fenlei}/>           
-              <Route path={'/Shopcart'} component={Shopcart}/>
-              <Route path={'/Mine'} component={Mine}/>
-              <Route path={'/Detail'} component={Detail}/>
-              <Route path={'/Reg'} component={Reg}/>
-              <Route path={'/Login'} component={Login}/>
-              <Redirect from={'/'} to={'/Home'} exact/>
-          </Switch>
-      </div>
-    );
-  }
+// class App extends React.Component{
+//   render() {
+//     return (    
+//       <div>       
+//           <Switch>
+//               <Route path={'/Home'} component={Home}/>
+//               <Route path={'/Fenlei'} component={Fenlei}/>           
+//               <Route path={'/Shopcart'} component={Shopcart}/>
+//               <Route path={'/Mine'} component={Mine}/>
+//               <Route path={'/Detail'} component={Detail}/>
+//               <Route path={'/Reg'} component={Reg}/>
+//               <Route path={'/Login'} component={Login}/>
+//               <Redirect from={'/'} to={'/Home'} exact/>
+//           </Switch>
+//       </div>
+//     );
+//   }
+// }
+
+function App(props) {
+  return (
+    <div>
+      <Switch>
+        <Route path={'/Home'} component={Home} />
+        <Route path={'/Fenlei'} component={Fenlei} />
+        <Route path={'/Shopcart'} component={Shopcart} />
+        <Route path={'/Mine'} component={Mine} />
+        <Route path={'/Detail/:id'} component={Detail} />
+        <Route path={'/Reg'} component={Reg} />
+        <Route path={'/Login'} component={Login} />
+        <Redirect from={'/'} to={'/Home'} exact />
+      </Switch>
+    </div>
+  );
 }
 App = withRouter(App);
 export default App;
