@@ -51,5 +51,63 @@ router.get('/shoplist', async (req, res) => {
         res.send(inf);
     }
 });
+
+//需求：删除某条商品数据 DELETE FROM shop WHERE id=
+router.delete('/del/:id', async (req, res) => {
+    let id = req.params.id;//获取uid
+    try {
+        // console.log(9999);
+        let sql = `DELETE FROM shop WHERE id="${id}"`;
+        console.log(sql)
+        let p = await query(sql);//[{},{}]
+        // console.log(p);
+        let inf = {};
+        if (p.affectedRows) {
+            //删除成功
+            inf = {
+                code: 2000,
+                flag: true,
+                message: '删除成功'
+            }
+        } else {
+            //删除失败
+            inf = {
+                code: 3000,
+                flag: false,
+                message: '删除失败'
+            }
+        }
+        res.send(inf);
+    } catch (err) {
+        let inf = {
+            code: err.errno,
+            flag: false,
+            message: '查询失败'
+        }
+        res.send(inf);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
 

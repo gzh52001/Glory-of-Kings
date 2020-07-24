@@ -120,8 +120,23 @@ class Shop extends Component{
 
     }
     //功能：商品删除
-    delItem = () =>{
-
+    delItem = (record) =>{
+        Modal.confirm({
+            title: '提示!',
+            icon: <ExclamationCircleOutlined />,
+            content: '您确定要删除吗？',
+            okText: '确认',
+            cancelText: '取消',
+            onOk:async() =>{
+              let d = await http.remove('/shop/del/'+ record.id)
+              if(d.flag){
+                  message.success('删除成功!')
+                  this.search()
+              }else{
+                  message.error('删除失败!')
+                  } 
+              }
+          });
     }
     render(){
         let { columns,shopName,shopType,data } = this.state
