@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid ,List} from 'antd-mobile';
-import Footer from '../Footer';
 
 import './index.scss';
 import Footer from '../Footer';
@@ -133,8 +132,6 @@ class Mine extends Component {
                         <Footer/>
                     </div> 
                 }
-                 {/* 底部导航路由 */}
-                 <Footer />
             </>
         )
     }

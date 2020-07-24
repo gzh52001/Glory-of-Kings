@@ -136,6 +136,7 @@ body {
 .page-wrap .hasfixedbar {
   overflow-y: auto;
   margin-bottom: 50px;
+  margin-top: 12vw;
   background: #f3f4f6;
 }
 
