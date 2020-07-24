@@ -1,0 +1,39 @@
+html,
+body {
+  height: 100%;
+  background: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.com-msgbox {
+  width: 100%;
+  height: 38.26667vw;
+  padding-top: 26.66667vw;
+  text-align: center;
+}
+
+.com-msgbox i {
+  font-size: 13.33333vw;
+  color: #ccc;
+}
+
+.com-msgbox p {
+  color: #999;
+  font-size: 3.73333vw;
+  padding-top: 2.66667vw;
+}
+
+.com-msgbox div {
+  width: 32vw;
+  height: 9.06667vw;
+  border-radius: 9.06667vw;
+  background: #ffd54f;
+  color: #333;
+  line-height: 9.06667vw;
+  text-align: center;
+  margin: 5.33333vw auto;
+}

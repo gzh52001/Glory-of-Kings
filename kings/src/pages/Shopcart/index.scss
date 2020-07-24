@@ -1,0 +1,40 @@
+html,
+body {
+    height: 100%;
+    background: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@function vw($px) {
+    @return ($px / 750) * 100vw;
+}
+
+.com-msgbox {
+    width: 100%;
+    height: vw(287);
+    padding-top: vw(200);
+    text-align: center;
+    i {
+        font-size: vw(100);
+        color: #ccc;
+    }
+    p {
+        color: #999;
+        font-size: vw(28);
+        padding-top: vw(20);
+    }
+    div {
+        width: vw(240);
+        height: vw(68);
+        border-radius: vw(68);
+        background: #ffd54f;
+        color: #333;
+        line-height: vw(68);
+        text-align: center;
+        margin:vw(40) auto;
+    }
+}
