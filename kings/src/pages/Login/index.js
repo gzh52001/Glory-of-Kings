@@ -3,9 +3,24 @@ import React, { Component } from 'react';
 import './login.css'
 
 class Login extends Component {
-    onchange() {
-        window.history.back(-1)
+
+    // 返回到列表页
+    onchange = () => {
+        const { history } = this.props;
+        history.push({
+            pathname: '/Fenlei',
+        });
     }
+
+    // 跳转到注册页面
+    gotoReg = () => {
+        const { history } = this.props;
+        history.push({
+            pathname: '/Reg',
+        });
+    }
+
+    
     render() {
         return (
             <div>
@@ -25,7 +40,7 @@ class Login extends Component {
 
                         <div className="psw">
                             <span className="title"></span>
-                            <input className="inpu" type="text" placeholder="请输入密码" />
+                            <input className="inpu" type="password" placeholder="请输入密码"/>
                         </div>
 
                         {/* 登入按钮 */}
@@ -34,7 +49,7 @@ class Login extends Component {
                         {/* 忘记密码 新用户注册 */}
                         <div className="mm">
                             <span className="wjmm">忘记密码</span>
-                            <span className="dr">新用户注册</span>
+                            <span className="dr" onClick={this.gotoReg}>新用户注册</span>
                         </div>
                     </div>
                 </div>

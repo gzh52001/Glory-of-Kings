@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
+// 弹窗组件
+import { Modal, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
+
 
 import Footer from '../Footer';
 import './shopcart.css';
@@ -38,7 +41,8 @@ class Shopcart extends Component {
             "new_pri": "19.90",
             "buy_num": "1"
         }],
-        che: true
+        che: true,
+        redirect: false,
     }
     onCheck = () => {
         const { che } = this.state
@@ -46,6 +50,33 @@ class Shopcart extends Component {
             che: !che
         })
     }
+    // 阶段判断localStorage中是否已经存在用户信息
+    componentWillMount() {
+        if (localStorage.getItem("username")) {
+            console.log("已经登陆过了");
+            this.setState({ redirect: true });
+        } else {
+            console.log("没有登录跳转到登入页")
+            const { history } = this.props;
+            alert("没有登录跳转到登入页")
+            history.push({
+                pathname: '/Login',
+            });
+        }
+    }
+
+
+    // showAlert = () => {
+    //     const alertInstance = alert('Delete', 'Are you sure???', [
+    //         { text: 'Cancel', onPress: () => console.log('cancel'), style: 'default' },
+    //         { text: 'OK', onPress: () => console.log('ok') },
+    //     ]);
+    //     setTimeout(() => {
+    //         // 可以调用close方法以在外部close
+
+    //         alertInstance.close();
+    //     }, 500000);
+    // };
     render() {
         const { che } = this.state
         const { data } = this.state
@@ -122,7 +153,7 @@ class Shopcart extends Component {
                     {/* 结算 */}
                     <div className="cart-btnbox"></div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         )
     }
