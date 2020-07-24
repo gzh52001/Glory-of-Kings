@@ -12,17 +12,18 @@ router.get('/shoplist', async (req, res) => {
     console.log('进来1');
     shopType = shopType ? shopType : ''
     shopName = shopName ? shopName : ''
+    console.log('参数'+ shopType,shopName);
     try {
         console.log('进来2');
         let sql
         if (!shopName && !shopType) {
-            sql = `SELECT * FROM shop`
+            sql = `SELECT s1.id,shopName,shopCard,nowPrice,rePrice,purPrice,num,shopType,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id`
         } else if(shopName && !shopType){
-            sql = `SELECT * FROM shop WHERE shopType="${shopType}"`
+            sql = `SELECT s1.id,shopName,shopCard,nowPrice,rePrice,purPrice,num,shopType,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND shopName="${shopName}"`
         } else if(!shopName && shopType){
-            sql = `SELECT * FROM shop WHERE shopName="${shopName}"`
+            sql = `SELECT s1.id,shopName,shopCard,nowPrice,rePrice,purPrice,num,shopType,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND shopType="${shopType}"`
         }else {
-            sql = `SELECT * FROM shop WHERE shopType="${shopType}" AND shopName="${shopName}"`;
+            sql = `SELECT s1.id,shopName,shopCard,nowPrice,rePrice,purPrice,num,shopType,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND shopName="${shopName}" AND shopType="${shopType}"`;
         }
         console.log(sql);
         let p = await query(sql);

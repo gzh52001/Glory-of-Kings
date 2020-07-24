@@ -9,42 +9,42 @@ class Shop extends Component{
             {
                 title: '序号',
                 dataIndex: 'id',
-                width: 80,
+                width: 60,
             },
             {
                 title: '商品名称',
                 dataIndex: 'shopName',
-                width: 100,
+                width: 190,
             },
             {
                 title: '商品编码',
                 dataIndex: 'shopCard',
-                width: 100,
+                width: 90,
             },
             {
                 title: '当前价格',
                 dataIndex: 'nowPrice',
-                width: 130,
+                width: 75,
             },
             {
                 title: '零售价',
                 dataIndex: 'rePrice',
-                width: 80,
+                width: 55,
             },
             {
                 title: '进货价',
                 dataIndex: 'purPrice',
-                width: 130,
+                width: 55,
             },
             {
                 title: '库存',
                 dataIndex: 'num',
-                width: 80,
+                width: 55,
             },
             {
                 title: '商品类型',
-                dataIndex: 'entryTime',
-                width: 120,
+                dataIndex: 'shopType',
+                width: 80,
             },
             {
                 title:'商品图片',
@@ -63,7 +63,7 @@ class Shop extends Component{
                 <a onClick={this.editItem.bind(this,record)}>编辑</a>
                 <a onClick={this.delItem.bind(this,record)}>删除</a>
               </Space>,
-                width: 120,
+                width: 90,
             }              
         ],
         data: [],//商品列表数据
@@ -72,17 +72,37 @@ class Shop extends Component{
     }
 
     //功能：商品名称受控
-    changeShopName = () =>{
-
+    changeShopName = (e) =>{
+        this.setState({
+            shopName:e.target.value
+        })
     }
     //功能：商品类型受控
-    changeShopType = () =>{
-        
+    changeShopType = (e) =>{
+        this.setState({
+            shopType:e.target.value
+        })
     }
-
+    //最早能获取数据的生命周期函数
+    componentDidMount(){
+        //数据渲染
+        this.search()   
+    }
     //功能：查询商品列表
-    search = () =>{
+    search = async () =>{
+        const {shopName,shopType} = this.state
+        const data = await http.get('/shop/shoplist',{
+            shopName,
+            shopType
+        })
+        if(data.flag){
 
+        }else{
+            message.warning('查无此数据!')
+        }
+        this.setState({
+            data:data.data
+        })
     }
     //功能：新增商品
     showModal = () =>{
@@ -92,6 +112,14 @@ class Shop extends Component{
     onReset = () =>{
         
     }
+    //功能：商品编辑
+    editItem = () =>{
+
+    }
+    //功能：商品删除
+    delItem = () =>{
+
+    }
     render(){
         let { columns,shopName,shopType,data } = this.state
         return(
@@ -99,10 +127,10 @@ class Shop extends Component{
                 {/* 搜索表单 */}
                 <Form layout='inline' className='search'>
                     <Form.Item label="商品名称">
-                        <Input ref={(ele) => { this.shopName = ele}} value={shopName} onChange={this.changeShopName} placeholder="请输入所需查询的账号" />
+                        <Input ref={(ele) => { this.shopName = ele}} value={shopName} onChange={this.changeShopName} placeholder="请输入所需查询的商品名称" />
                     </Form.Item>
                     <Form.Item label="商品类型">
-                        <Input ref={(ele) => { this.shopType = ele}} value={shopType} onChange={this.changeShopType} placeholder="请输入所需查询的姓名" />
+                        <Input ref={(ele) => { this.shopType = ele}} value={shopType} onChange={this.changeShopType} placeholder="请输入所需查询商品类型" />
                     </Form.Item>
                     <Form.Item className='btn'>
                         <Button type="primary" onClick={this.search}>查询</Button>
