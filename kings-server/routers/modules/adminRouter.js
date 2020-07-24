@@ -286,11 +286,11 @@ router.get('/adminlist', async (req, res) => {
         if (!username && !name) {
             sql = `SELECT * FROM admin`
         } else if(username && !name){
-            sql = `SELECT * FROM admin WHERE username="${username}"`
+            sql = `SELECT * FROM admin WHERE username like "%${username}%"`
         } else if(!username && name){
-            sql = `SELECT * FROM admin WHERE name="${name}"`
+            sql = `SELECT * FROM admin WHERE name like "%${name}%"`
         }else {
-            sql = `SELECT * FROM admin WHERE username="${username}" AND name="${name}"`;
+            sql = `SELECT * FROM admin WHERE username like "%${username}%" AND name like "%${name}%"`;
         }
         console.log(sql);
         let p = await query(sql);
