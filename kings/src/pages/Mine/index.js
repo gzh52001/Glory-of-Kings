@@ -3,7 +3,7 @@ import { Grid ,List} from 'antd-mobile';
 import Footer from '../Footer';
 
 import './index.scss';
-
+import Footer from '../Footer';
 const Item = List.Item;
 
 class Mine extends Component {
@@ -130,6 +130,7 @@ class Mine extends Component {
                             onClick={() => {}}
                             >商城公告</Item>                          
                         </List>
+                        <Footer/>
                     </div> 
                 }
                  {/* 底部导航路由 */}

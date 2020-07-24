@@ -20,7 +20,7 @@ const router = express.Router();//router==app
             * 上传用户头像
 */
 
-//需要：验证管理员是否存在 /user/checkname  一个请求里面只能有一个send否则会报错
+//需要：验证管理员是否存在 /admin/checkname  一个请求里面只能有一个send否则会报错
 router.get('/checkname', async (req, res) => {
     // console.log(6666);
     let { username2 } = req.query;
