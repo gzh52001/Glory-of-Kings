@@ -9,12 +9,9 @@ const router = express.Router();//router==app
 //需求：查询商品列表(含条件查询)
 router.get('/shoplist', async (req, res) => {
     let { shopType, shopName } = req.query
-    console.log('进来1');
     shopType = shopType ? shopType : ''
     shopName = shopName ? shopName : ''
-    console.log('参数'+ shopType,shopName);
     try {
-        console.log('进来2');
         let sql
         if (!shopName && !shopType) {
             sql = `SELECT s1.id,shopName,shopCard,nowPrice,rePrice,purPrice,num,shopType,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id`
@@ -25,12 +22,7 @@ router.get('/shoplist', async (req, res) => {
         }else {
             sql = `SELECT s1.id,shopName,shopCard,nowPrice,rePrice,purPrice,num,shopType,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND shopName like "%${shopName}%" AND shopType like "%${shopType}%"`;
         }
-        console.log(sql);
         let p = await query(sql);
-        // console.log('sql' + sql)
-        // console.log(p)
-        //let sql2 = `SELECT * FROM admin`;
-        //let arr = await query(sql2);//所有的数据 []
         let inf = {};
         if (p.length) {
             inf = {
@@ -51,7 +43,6 @@ router.get('/shoplist', async (req, res) => {
 
         res.send(inf);
     } catch (err) {
-        // console.log(77889);
         let inf = {
             code: err.errno,
             flag: false,
