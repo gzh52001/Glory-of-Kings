@@ -9,6 +9,7 @@ router.use(bodyParser.urlencoded({ extended: false }));//转键值对数据 key=
 //导入子路由
 const adminRouter = require('./modules/adminRouter');//管理员的接口
 const userRouter = require('./modules/userRouter')//用户的接口
+const shopRouter = require('./modules/shopRouter')//商品的接口
 //CORS跨域：方便和小伙伴共享接口：加上这段话，再设置防火墙，别人就可以访问你的接口了(记得保证服务器开启)
 //把这个路由配置放在所有路由的前面，方便调用next操作
 router.use((req, res, next) => {
@@ -26,6 +27,7 @@ router.use((req, res, next) => {
 //use无论是什么请求都可以进入
 router.use('/admin', adminRouter);//启用子路由:use里面的函数是中间件
 router.use('/user', userRouter);
+router.use('/shop', shopRouter);
 //中间件本质上是函数，但是函数不一定是中间件 (req, res, next)
 
 
