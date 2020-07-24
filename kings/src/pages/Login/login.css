@@ -1,0 +1,113 @@
+html,
+body {
+  height: 100%;
+  background: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.head_lable {
+  height: 14vw;
+  background: #fff;
+  -webkit-box-shadow: 0px 8px 4px -7px #e6e4e5;
+          box-shadow: 0px 8px 4px -7px #e6e4e5;
+  text-align: center;
+  line-height: 14vw;
+  font-size: 5.33333vw;
+  color: #333333;
+}
+
+.head_lable .returnBtn {
+  float: left;
+  width: 10.66667vw;
+  height: 100%;
+  background: url("../../assets/kh.png") center center no-repeat;
+  background-size: 5.33333vw 8vw;
+}
+
+.loginForm {
+  padding: 2.66667vw;
+  text-align: right;
+  background: #f6f4f5;
+}
+
+.loginForm .usname {
+  overflow: hidden;
+  margin-top: 4vw;
+  background: #fff;
+}
+
+.loginForm .usname .titl {
+  width: 13.33333vw;
+  height: 13.33333vw;
+  float: left;
+  background: url("../../assets/use.png") center center no-repeat;
+}
+
+.loginForm .usname .inp {
+  background: none;
+  outline: none;
+  border: none;
+  width: 80vw;
+  height: 13.33333vw;
+  float: left;
+  text-indent: 4vw;
+  font-size: 4vw;
+}
+
+.loginForm .psw {
+  margin-top: 6.66667vw;
+  overflow: hidden;
+  background: #fff;
+}
+
+.loginForm .psw .title {
+  width: 13.33333vw;
+  height: 13.33333vw;
+  float: left;
+  background: url("../../assets/ps.png") center center no-repeat;
+}
+
+.loginForm .psw .inpu {
+  background: none;
+  outline: none;
+  border: none;
+  width: 80vw;
+  height: 13.33333vw;
+  float: left;
+  text-indent: 4vw;
+  font-size: 4vw;
+}
+
+.loginForm .log {
+  width: 100%;
+  height: 13.33333vw;
+  border: 0.13333vw solid #000;
+  text-align: center;
+  line-height: 13.33333vw;
+  font-size: 5.33333vw;
+  color: #fff;
+  background: #666a6b;
+  margin: 5.33333vw auto;
+}
+
+.loginForm .mm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.loginForm .mm .wjmm {
+  font-size: 4vw;
+}
+
+.loginForm .mm .dr {
+  font-size: 4vw;
+}
+/*# sourceMappingURL=login.css.map */

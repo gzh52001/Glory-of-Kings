@@ -76,16 +76,16 @@ class Shopcart extends Component {
                                         <img src={item.img} alt="" />
                                     </div>
                                     <div className="good-info">
-                                        <a class="info-name">{item.name}</a>
+                                        <a className="info-name">{item.name}</a>
                                         <span className="info-size">款式：现货 </span>
-                                        <p class="info-tip"></p>
+                                        <p className="info-tip"></p>
                                         <div className="info-bd">
                                             <div className='info-price'>
                                                 <h4>¥ {item.new_pri}</h4>
                                             </div>
                                             <div className='amount-counter'>
                                                 <a className="amount-minus">-</a>
-                                                <input className="amount-text" type="number" value={item.buy_num} />
+                                                <input className="amount-text" type="number" defaultValue={item.buy_num} />
                                                 <a className="amount-plus">+</a>
                                             </div>
                                         </div>
