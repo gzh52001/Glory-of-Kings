@@ -110,7 +110,10 @@ class Shop extends Component{
     }
     //功能：重置搜索按钮
     onReset = () =>{
-        
+        this.setState({
+            shopName:'',
+            shopType:''
+        })
     }
     //功能：商品编辑
     editItem = () =>{
