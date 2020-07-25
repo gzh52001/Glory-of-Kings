@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component,lazy,Suspense } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom'
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Breadcrumb } from 'antd'
 import 'antd/dist/antd.css'
 import './Home.scss'
 import { withLogin } from '../../utils/userHoc'
-import Headerr from '../Header'
-import Siderr from '../Sider'
-import Admin from '../../pages/Admin'
-import User from '../../pages/User'
-import Shop from '../../pages/Shop'
-import ShopType from '../../pages/ShopType'
-import Welcome from '../../pages/Welcome'
+// import Headerr from '../Header'
+// import Siderr from '../Sider'
+// import Admin from '../../pages/Admin'
+// import User from '../../pages/User'
+// import Shop from '../../pages/Shop'
+// import ShopType from '../../pages/ShopType'
+// import Welcome from '../../pages/Welcome'
+
+const Headerr = lazy(() => import("../Header"))
+const Siderr = lazy(() => import("../Sider"))
+const Admin = lazy(() => import("../../pages/Admin"))
+const User = lazy(() => import("../../pages/User"))
+const Shop = lazy(() => import("../../pages/Shop"))
+const ShopType = lazy(() => import("../../pages/ShopType"))
+const Welcome = lazy(() => import("../../pages/Welcome"))
+
 class Home extends Component {
     constructor() {
         super()
@@ -38,6 +47,7 @@ class Home extends Component {
                             </Breadcrumb>
                             {/* content内容 */}
                             {/* <Contentt /> */}
+                            <Suspense fallback={<div>Loading...</div>}>
                             <Switch>
                                 <Route path="/home/admin" exact={true} component={Admin}></Route>
                                 <Route path='/home/user' component={User} />
@@ -47,6 +57,7 @@ class Home extends Component {
                                 <Redirect from='/' to='/home/welcome' exact />
                                 <Redirect to='/home/welcome'/>
                             </Switch>
+                            </Suspense>
                         </Layout>
                     </Layout>
                 </Layout>

@@ -16,51 +16,61 @@ class Admin extends Component {
             
             columns: [
                 {
+                    align:'center',
                     title: '序号',
                     dataIndex: 'id',
                     width: 80,
                 },
                 {
+                    align:'center',
                     title: '账号',
                     dataIndex: 'username',
                     width: 100,
                 },
                 {
+                    align:'center',
                     title: '密码',
                     dataIndex: 'pwd',
                     width: 100,
                 },
                 {
+                    align:'center',
                     title: '姓名',
                     dataIndex: 'name',
                     width: 130,
                 },
                 {
+                    align:'center',
                     title: '年龄',
                     dataIndex: 'age',
                     width: 80,
                 },
                 {
+                    align:'center',
                     title: '电话',
                     dataIndex: 'phone',
                     width: 130,
                 },
                 {
+                    align:'center',
                     title: '薪资',
                     dataIndex: 'pay',
                     width: 80,
                 },
                 {
+                    align:'center',
                     title: '入职时间',
                     dataIndex: 'entryTime',
                     width: 120,
                 },
                 {
+                    align:'center',
                     title: '地址',
                     dataIndex: 'address',
                     width: 120,
                 },
                 {
+                    align:'center',
                     title: '操作',
                     dataIndex: '',
                     key: 'x',

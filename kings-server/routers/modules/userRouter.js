@@ -40,12 +40,10 @@ router.get('/checkname', async (req, res) => {
 //需求：用户新增  /user/reg
 router.post('/reg', async (req, res) => {
     let { username, pwd,name,birthday,phone,balance,integral,payType,address } = req.query;
-    //console.log(''+username, pwd,name,phone,address);
     try {
         let sql = `INSERT INTO user(username,pwd,name,birthday,phone,balance,integral,payType,address) VALUES('${username}','${pwd}','${name}','${birthday}','${phone}','${balance}','${integral}','${payType}','${address}')`;
         let p = await query(sql);//[{},{}]
         let inf = {}
-        console.log('p'+p);
         if (p.affectedRows) {
             inf = {
                 code: 2000,
@@ -73,7 +71,6 @@ router.post('/reg', async (req, res) => {
 //需要：用户登陆 /user/login
 router.post('/login', async (req, res) => {
     let { username, pwd } = req.query;
-    console.log('参数'+username, pwd);
     try {
         let sql = `SELECT * FROM user WHERE username='${username}' and pwd='${pwd}'`;
         let p = await query(sql);//[{},{}]

@@ -5,8 +5,8 @@ const { create, verify } = require('./token');
 
 const router = express.Router();//router==app
 
-
 //需求：查询商品列表(含条件查询)
+    //    /shop/shoplist
 router.get('/shoplist', async (req, res) => {
     let { shopType, shopName } = req.query
     shopType = shopType ? shopType : ''
@@ -56,11 +56,8 @@ router.get('/shoplist', async (req, res) => {
 router.delete('/del/:id', async (req, res) => {
     let id = req.params.id;//获取uid
     try {
-        // console.log(9999);
         let sql = `DELETE FROM shop WHERE id="${id}"`;
-        console.log(sql)
         let p = await query(sql);//[{},{}]
-        // console.log(p);
         let inf = {};
         if (p.affectedRows) {
             //删除成功
@@ -87,6 +84,112 @@ router.delete('/del/:id', async (req, res) => {
         res.send(inf);
     }
 });
+
+
+//需求：前台app首页分类数据渲染
+    //精品手办 数码  生活  服饰
+    router.get('/shoplistAll', async (req, res) => {
+        try {
+            //手办
+            const gk = await query("SELECT s1.id,shopType,shopName,nowPrice,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND t1.id=1").catch(err =>{
+                console.log(err);
+                throw Error(err);
+            })
+            //数码
+            const dig = await query("SELECT s1.id,shopType,shopName,nowPrice,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND t1.id=2").catch(err =>{
+                console.log(err);
+                throw Error(err);
+            })
+            //生活
+            const life = await query("SELECT s1.id,shopType,shopName,nowPrice,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND t1.id=3").catch(err =>{
+                console.log(err);
+                throw Error(err);
+            })
+            //服饰
+            const clo = await query("SELECT s1.id,shopType,shopName,nowPrice,shopPic FROM shop s1,shoptype t1 WHERE s1.tid=t1.id AND t1.id=4").catch(err =>{
+                console.log(err);
+                throw Error(err);
+            })
+            let inf = {};
+            let data = []
+            data.unshift(clo)
+            data.unshift(life)
+            data.unshift(dig)
+            data.unshift(gk)
+            if (gk.length && dig.length && life.length && clo.length) {
+                inf = {
+                    code: 2000,
+                    flag: true,
+                    message: '查询成功',
+                    data
+                }
+            } else {
+                inf = {
+                    code: 3000,
+                    flag: false,
+                    message: '查询失败'
+                }
+            }
+    
+            res.send(inf);
+        } catch (err) {
+            console.log(77889);
+            let inf = {
+                code: err.errno,
+                flag: false,
+                message: '查询失败'
+            }
+            res.send(inf);
+        }
+    });
+
+//需求：查询id为xx的商品信息
+    //    /shop/shopSingleList
+    router.get('/shopSingleList/:id', async (req, res) => {
+        let id = req.params.id;
+        try {
+            let sql = `SELECT * FROM shop WHERE id=${id}`;
+            let data = await query(sql);//[{},{}]
+            let inf = {}
+            if (data.length) {
+                //查到数据：查询成功
+                inf = {
+                    code: 2000,
+                    flag: true,
+                    message: '查询成功',
+                    data:data
+                    
+                }
+            } else {
+                //查不到数据:不能登录
+                inf = {
+                    code: 3000,
+                    flag: false,
+                    message: '查询成功'
+                }
+            }
+            res.send(inf);
+        } catch (err) {
+            let inf = {
+                code: err.errno,
+                flag: false,
+                message: '查询失败'
+            }
+            res.send(inf);
+        }
+    });
+
+module.exports = router;
+
+
+
+
+
+
+
+
+
+
 
 
 

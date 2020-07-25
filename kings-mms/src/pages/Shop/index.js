@@ -7,55 +7,65 @@ class Shop extends Component{
     state = {
         columns: [
             {
+                align:'center',
                 title: '序号',
                 dataIndex: 'id',
                 width: 60,
             },
             {
+                align:'center',
                 title: '商品名称',
                 dataIndex: 'shopName',
                 width: 190,
             },
             {
+                align:'center',
                 title: '商品编码',
                 dataIndex: 'shopCard',
                 width: 90,
             },
             {
+                align:'center',
                 title: '当前价格',
                 dataIndex: 'nowPrice',
                 width: 75,
             },
             {
+                align:'center',
                 title: '零售价',
                 dataIndex: 'rePrice',
                 width: 55,
             },
             {
+                align:'center',
                 title: '进货价',
                 dataIndex: 'purPrice',
                 width: 55,
             },
             {
+                align:'center',
                 title: '库存',
                 dataIndex: 'num',
                 width: 55,
             },
             {
+                align:'center',
                 title: '商品类型',
                 dataIndex: 'shopType',
                 width: 80,
             },
             {
+                align:'center',
                 title:'商品图片',
                 dataIndex:'',
-                width:150,
+                width:130,
                 key:'shopPic',
                 render:(record)=>{
-                    return <img src={record.shopPic} alt="" style={{width:'5    0px',height:'50px',borderRadius:'50%'}}/>
+                    return <img src={record.shopPic} alt="" style={{width:'150px',height:'150px'}}/>
                 }
             },
             {
+                align:'center',
                 title: '操作',
                 dataIndex: '',
                 key: 'x',
@@ -159,6 +169,8 @@ class Shop extends Component{
 
 
                 <Table
+                    //loading={true}
+                    
                     columns={columns}
                     dataSource={data}
                     pagination={{
