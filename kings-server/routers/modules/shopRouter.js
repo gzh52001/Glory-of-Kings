@@ -110,17 +110,17 @@ router.delete('/del/:id', async (req, res) => {
                 throw Error(err);
             })
             let inf = {};
+            let data = []
+            data.unshift(clo)
+            data.unshift(life)
+            data.unshift(dig)
+            data.unshift(gk)
             if (gk.length && dig.length && life.length && clo.length) {
                 inf = {
                     code: 2000,
                     flag: true,
                     message: '查询成功',
-                    data: {
-                        gk,
-                        dig,
-                        life,
-                        clo
-                    }
+                    data
                 }
             } else {
                 inf = {
