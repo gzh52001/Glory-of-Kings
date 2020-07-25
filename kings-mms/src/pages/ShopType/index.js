@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Table,Button,Space,Form, Input, Radio,message,Modal } from 'antd';
+import { Table,Button,Space,Form, Input,message,Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import http from '../../utils/http';
 class ShopType extends Component{
