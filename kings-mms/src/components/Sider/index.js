@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import {Route,withRouter} from 'react-router-dom'
 import { Layout, Menu} from 'antd'
-import { UserAddOutlined, ShopOutlined, ShoppingOutlined,UsergroupAddOutlined } from '@ant-design/icons'
+import { UserAddOutlined, ShopOutlined, ShoppingOutlined,UsergroupAddOutlined,UnorderedListOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
 import Admin from '../../pages/Admin'
 import User from '../../pages/User'
 import Shop from '../../pages/Shop'
 import ShopType from '../../pages/ShopType'
+import Welcome from '../../pages/Welcome'
 const {Sider } = Layout
 class Siderr extends Component{
   constructor(){
@@ -15,24 +16,30 @@ class Siderr extends Component{
       siderList:[
         {
           key:'1',
+          icon:<UnorderedListOutlined />,
+          text:'欢迎光临',
+          path:'/home/welcome'
+        },
+        {
+          key:'2',
           icon:<UserAddOutlined />,
           text:'管理员信息管理',
           path:'/home/admin'
         },
         {
-          key:'2',
+          key:'3',
           icon:<ShopOutlined />,
           text:'商品类型管理',
           path:'/home/shoptype'
         },
         {
-          key:'3',
+          key:'4',
           icon:<ShoppingOutlined />,
           text:'商品数据管理',
           path:'/home/shop'
         },
         {
-          key:'4',
+          key:'5',
           icon:<UsergroupAddOutlined />,
           text:'用户信息管理',
           path:'/home/user'
@@ -62,6 +69,7 @@ class Siderr extends Component{
               )
           }
         </Menu>
+        <Route path='/welcome' component={Welcome} />
         <Route path='/admin' component={Admin} />
         <Route path='/user' component={User} />
         <Route path='/shop' component={Shop} />
