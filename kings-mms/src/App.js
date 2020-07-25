@@ -7,8 +7,8 @@ import 'antd/dist/antd.css'
 // import NotFound from './components/NotFound'
 
 const Home = lazy(() => import("./components/Home"))
-const Login = lazy(() => import("./components/Home"))
-const NotFound = lazy(() => import("./components/Home"))
+const Login = lazy(() => import("./components/Login"))
+const NotFound = lazy(() => import("./components/NotFound"))
 
 function App() {
   return (
