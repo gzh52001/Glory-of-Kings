@@ -6,6 +6,7 @@ const { create, verify } = require('./token');
 const router = express.Router();//router==app
 
 //需求：查询商品列表(含条件查询)
+    //    /shop/shoplist
 router.get('/shoplist', async (req, res) => {
     let { shopType, shopName } = req.query
     shopType = shopType ? shopType : ''
