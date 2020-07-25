@@ -14,25 +14,25 @@ class ShopType extends Component{
             {
                 align:'center',
                 title: '商品类型',
-                dataIndex: 'username',
+                dataIndex: 'shopType',
                 width: 100,
             },
             {
                 align:'center',
                 title: '添加时间',
-                dataIndex: 'pwd',
+                dataIndex: 'addTime',
                 width: 100,
             },
             {
                 align:'center',
                 title: '添加人',
-                dataIndex: 'name',
+                dataIndex: 'addUser',
                 width: 130,
             },
             {
                 align:'center',
                 title: '备注',
-                dataIndex: 'age',
+                dataIndex: 'commit',
                 width: 80,
             },
             {
@@ -66,11 +66,21 @@ class ShopType extends Component{
         })
     }
     componentDidMount(){
-
+        this.search()
     }
     //功能：搜索
-    search = () =>{
-        
+    search = async() =>{
+        const {shopType,addUser} = this.state
+        const data = await http.get('/shopType/shopTypelist',{
+            shopType,
+            addUser
+        })
+        if(!data.flag){
+            message.warning('查无此数据!')
+        }
+        this.setState({
+            data:data.data
+        })
     }
 
     //功能：新增而类型
@@ -84,6 +94,29 @@ class ShopType extends Component{
             addUser:''
         })
     }
+    //功能：编辑数据
+    editItem = () =>{
+
+    }
+    //功能：删除数据
+    delItem = (record) =>{
+        Modal.confirm({
+            title: '提示!',
+            icon: <ExclamationCircleOutlined />,
+            content: '确定商品数据中无此类型才能删除哦！！！！不然打屁股',
+            okText: '确认',
+            cancelText: '取消',
+            onOk:async() =>{
+              let d = await http.remove('/shopType/shopTypeDel/'+ record.id)
+              if(d.flag){
+                  message.success('删除成功!')
+                  this.search()
+              }else{
+                  message.error('删除失败!')
+                  } 
+              }
+          });
+    }
     render(){
         let { columns,shopType,addUser,data } = this.state
         return(
@@ -91,7 +124,7 @@ class ShopType extends Component{
                 {/* 搜索表单 */}
                 <Form layout='inline' className='search'>
                     <Form.Item label="账号">
-                        <Input ref={(ele) => { this.shopType = ele}} value={shopType} onChange={this.changeShopType} placeholder="请输入所需查询的类型名称" />
+                        <Input ref={(ele) => { this.shopType = ele}} value={shopType} onChange={this.changeShopType} placeholder="请输入所需查询的商品类型名称" />
                     </Form.Item>
                     <Form.Item label="姓名">
                         <Input ref={(ele) => { this.addUser = ele}} value={addUser} onChange={this.changeAddUser} placeholder="请输入所需查询的添加人" />
