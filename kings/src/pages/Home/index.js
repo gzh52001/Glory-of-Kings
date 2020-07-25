@@ -3,6 +3,9 @@ import { Carousel, WingBlank } from 'antd-mobile';
 import Footer from '../Footer';
 // 引入样式
 import "./home.css"
+
+// 引入http.js文件
+import http, { request } from '../../utils/http';
 class Home extends React.Component {
     constructor() {
         super()
@@ -14,124 +17,43 @@ class Home extends React.Component {
                 "https://game.gtimg.cn/images/daojushop/zb/ad/202004/20200422094747_872520.jpg",
                 "https://game.gtimg.cn/images/daojushop/zb/ad/202004/20200422094939_704763.png",
             ],
-            home: [
-                {
-                    "home_id": "1",
-                    "title": "精美手办",
-                    "commodity": [
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201910/20191017152303_40971.jpg",
-                            "name": "游园惊梦甄姬Q版手办",
-                            "price": "258.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201811/20181113204748_63984.jpg",
-                            "name": "恋之微风小乔Q版手办",
-                            "price": "168.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201908/20190823100830_32945.jpg",
-                            "name": "王都密探李元芳Q版手办",
-                            "price": "168.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201902/20190219140910_60645.jpg",
-                            "name": "诸葛亮可换表情可动粘土人手办",
-                            "price": "278.00"
-                        }
-                    ]
-                },
-                {
-                    "home_id": "2",
-                    "title": "数码3C",
-                    "commodity": [
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201911/20191106143506_64281.jpg",
-                            "name": "小英雄3C系列Airpods透明保护套",
-                            "price": "45.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201911/20191107150131_91871.jpg",
-                            "name": "开黑系列手机数据线T型款-苹果",
-                            "price": "49.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201907/20190719020112_57654.jpg",
-                            "name": "青莲剑仙双色充电宝李白款",
-                            "price": "159.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202001/20200114140222_70882.jpg",
-                            "name": "Q萌英雄双层手机壳",
-                            "price": "68.00"
-                        }
-                    ]
-                },
-                {
-                    "home_id": "3",
-                    "title": "生活周边",
-                    "commodity": [
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201909/20190916135819_58379.jpg",
-                            "name": "绝代智谋 诸葛亮 骨瓷马克杯",
-                            "price": "68.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201903/20190329215527_28359.jpg",
-                            "name": "凤求凰李白竹语伞",
-                            "price": "299.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202001/20200114173759_57488.jpg",
-                            "name": "Q萌金属钥匙扣",
-                            "price": "29.90"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202001/20200103162515_61172.jpg",
-                            "name": "王者招福开运礼盒",
-                            "price": "88.00"
-                        }
-                    ]
-                },
-                {
-                    "home_id": "4",
-                    "title": "服装服饰",
-                    "commodity": [
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201907/20190719111011_65803.jpg",
-                            "name": "Q萌表情三连拍印花T恤",
-                            "price": "88.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/201910/20191021133304_11066.jpg",
-                            "name": "凤凰于飞王昭君华服",
-                            "price": "549.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202004/20200417173559_54080.jpg",
-                            "name": "Carry全场印花T恤",
-                            "price": "138.00"
-                        },
-                        {
-                            "img": "https://game.gtimg.cn/images/zb/x5/uploadImg/goods/202004/20200417173204_39961.jpg",
-                            "name": "王者态度系列T恤",
-                            "price": "138.00"
-                        }
-                    ]
-                }
-            ],
+
+            data: [],
         }
     }
+
+    // 发送请求拿数据
+    componentWillMount() {
+        const request = http.get('/shop/shoplistAll')
+        request.then(res => {
+            if (res.flag) {
+                this.setState({
+                    data: res.data,
+                })
+            }
+        }).catch(ree => {
+            console.log(ree);
+        })
+    }
+
     goto = () => {
         const { history } = this.props;
         history.push({
             pathname: '/Fenlei',
         });
     }
-   
+
+    // 跳转详情 传参
+    toXq = (id) => {
+        const { history } = this.props;
+        history.push({
+            pathname: '/Detail/' + id,
+            // search: '?id=' + id,
+        });
+    }
     render() {
         const { img } = this.state
-        const { home } = this.state
+        const { data } = this.state
         return (
             <div className="box">
                 {/* main */}
@@ -203,37 +125,38 @@ class Home extends React.Component {
                         </li>
                     </div>
 
-                    {/* 列表 */}
+                    {/* 列表数据 */}
                     {
-                        home.map(item => <div key={item.home_id} className="listbox">
-                            <div className="list-tit">
-                                <h3>
-                                    {item.title}
-                                </h3>
-                            </div>
-                            <ul className="goods-list">
-                                {
-                                    item.commodity.map(
-                                        ite =>
-                                            <li key={ite.name} >
+                        data.map((item, index) =>
+                            <div className="listbox" key={index}>
+                                <div className="list-tit">
+                                    <h3>
+                                        {item[index].shopType}
+                                    </h3>
+                                </div>
+                                <ul className="goods-list">
+                                    {
+                                        item.map(ite =>
+                                            <li key={ite.id} onClick={this.toXq.bind(null,ite.id)}>
                                                 <div className="list-link">
                                                     <div className="list-img">
-                                                        <img src={ite.img} />
+                                                        <img src={ite.shopPic} />
                                                     </div>
                                                     <div className="list-bd">
                                                         <div className="name">
-                                                            <span>{ite.name}</span>
+                                                            <span>{ite.shopName}</span>
                                                         </div>
                                                         <div className="price">
-                                                            <p className="new-pri">￥{ite.price}</p>
+                                                            <p className="new-pri">￥{ite.nowPrice}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                    )
-                                }
-                            </ul>
-                        </div>)
+                                        )
+                                    }
+                                </ul>
+                            </div>
+                        )
                     }
 
                     {/* 底部 */}

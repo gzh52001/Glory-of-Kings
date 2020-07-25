@@ -58,6 +58,18 @@ body {
   font-size: 4vw;
 }
 
+.loginForm .p {
+  text-align: left;
+  color: red;
+  display: block;
+}
+
+.loginForm .d {
+  text-align: left;
+  color: red;
+  display: none;
+}
+
 .loginForm .psw {
   margin-top: 6.66667vw;
   overflow: hidden;

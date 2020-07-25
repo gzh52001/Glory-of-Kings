@@ -61,6 +61,18 @@ body {
         }
     }
 
+    .p {
+        text-align: left;
+        color: red;
+        display: block;
+    }
+
+    .d {
+        text-align: left;
+        color: red;
+        display: none;
+    }
+
     .psw {
         margin-top: vw(50);
         overflow: hidden;
@@ -98,14 +110,16 @@ body {
         margin: vw(40) auto;
     }
 
-    .mm{
+    .mm {
         display: flex;
         justify-content: space-between;
-        .wjmm{
+
+        .wjmm {
             font-size: vw(30);
         }
-        .dr{
+
+        .dr {
             font-size: vw(30);
         }
     }
-} 
+}
