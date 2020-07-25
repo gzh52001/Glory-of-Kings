@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+// 弹窗组件
 
 // 引入http.js文件
 import http, { request } from '../../utils/http';
+
 // 引入样式文件
 import './reg.css'
 
@@ -10,7 +12,7 @@ class Reg extends Component {
     onchange() {
         window.history.back(-1)
     }
-
+   
     // 点击注册
     search = () => {
         console.log(123);
@@ -22,19 +24,22 @@ class Reg extends Component {
             username: username,
             pwd: pwd
         })
-        console.log(request);
-        if(request.flag){
-            console.log("1234543");
-        }
+
+        // 注册成功跳转到登入页
+        request.then(res => {
+            if (res.flag) {
+                // localStorage.setItem("username", username)
+                // 跳转
+                const { history } = this.props;
+                history.push({
+                    pathname: '/Login',
+                });
+            }
+        }).catch(ree => {
+            console.log(ree);
+        })
     }
-    // 发送请求拿数据
-    // async componentDidMount() {
-    //     // 封装
-    //     // const request = await http.post('/user/reg', {
-    //     //     username: 'index',
-    //     //     pwd: "1234"
-    //     // })
-    // }
+
     render() {
         return (
             <div>
@@ -56,7 +61,8 @@ class Reg extends Component {
                         <input className="inpu" type="password" placeholder="请输入密码" ref={password => this.password = password} />
                     </div>
 
-                    {/* 登入按钮 */}
+
+                    {/* 注册按钮 */}
                     <div className="log" onClick={this.search.bind(null)}>注册</div>
                 </div>
             </div>
