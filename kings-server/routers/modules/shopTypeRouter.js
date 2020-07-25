@@ -5,15 +5,12 @@ const { create, verify } = require('./token');
 
 const router = express.Router();//router==app
 
-
-
 //需求：查询商品类型列表(含条件查询)
 router.get('/shopTypelist', async (req, res) => {
     let { shopType, addUser } = req.query
     shopType = shopType ? shopType : ''
     addUser = addUser ? addUser : ''
     try {
-        // console.log(666);
         let sql
         if (!shopType && !addUser) {
             sql = `SELECT * FROM shoptype`
@@ -24,7 +21,6 @@ router.get('/shopTypelist', async (req, res) => {
         }else {
             sql = `SELECT * FROM shoptype WHERE shopType like "%${shopType}%" AND addUser like "%${addUser}%"`;
         }
-        console.log(sql);
         let p = await query(sql);
         let inf = {};
         if (p.length) {
@@ -61,7 +57,6 @@ router.delete('/shopTypeDel/:id', async (req, res) => {
     let id = req.params.id;
     try {
         let sql = `DELETE FROM shoptype WHERE id="${id}"`;
-        console.log(sql)
         let p = await query(sql);
         let inf = {};
         if (p.affectedRows) {

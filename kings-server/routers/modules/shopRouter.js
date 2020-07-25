@@ -5,7 +5,6 @@ const { create, verify } = require('./token');
 
 const router = express.Router();//router==app
 
-
 //需求：查询商品列表(含条件查询)
 router.get('/shoplist', async (req, res) => {
     let { shopType, shopName } = req.query
@@ -56,11 +55,8 @@ router.get('/shoplist', async (req, res) => {
 router.delete('/del/:id', async (req, res) => {
     let id = req.params.id;//获取uid
     try {
-        // console.log(9999);
         let sql = `DELETE FROM shop WHERE id="${id}"`;
-        console.log(sql)
         let p = await query(sql);//[{},{}]
-        // console.log(p);
         let inf = {};
         if (p.affectedRows) {
             //删除成功
