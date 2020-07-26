@@ -34,7 +34,7 @@ class Home extends Component {
             <div>
                 <Layout style={{ height: '780px' }}>
                     {/* 头部 */}
-                    <Headerr />
+                    <Headerr {...this.props}/>
                     <Layout>
                         {/* 侧边导航 */}
                         <Siderr />

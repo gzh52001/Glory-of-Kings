@@ -1,14 +1,40 @@
 import React from 'react';
 
-import { Layout,Row, Col, Menu,Dropdown,Avatar } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
+import { Layout,Row, Col, Menu,Dropdown,Avatar,message,Modal } from 'antd'
+import { UserOutlined,ExclamationCircleOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
+import storage from '../../utils/storage';
 import './Header.scss'
 
 
 const { Header } = Layout
-function Headerr(){
+function Headerr(props){
 
+  //功能：弹出退出登陆提示界面
+  const loginOutYes = () => {
+    Modal.confirm({
+      title: '提示!',
+      icon: <ExclamationCircleOutlined />,
+      content: '您确定要退出吗？',
+      okText: '确认',
+      cancelText: '取消',
+      onOk:async() =>{
+          await storage.removeUser()
+          const key = storage.getUser()
+          if(key){
+            message.success('退出成功！')
+            props.history.push('/login')
+          }else{
+            message.warning('退出失败！')
+          }
+        }        
+    });
+  }
+
+  //功能：退出登陆
+  const loginOut = async () =>{
+    
+  }
     const menu = (
         <Menu>
           <Menu.Item>
@@ -17,7 +43,7 @@ function Headerr(){
             </a>
           </Menu.Item>
           <Menu.Item>
-            <a target="_self" rel="noopener noreferrer" href="#">
+            <a onClick={loginOutYes}>
               退出
             </a>
           </Menu.Item>

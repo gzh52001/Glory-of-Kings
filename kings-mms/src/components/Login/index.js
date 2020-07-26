@@ -65,7 +65,7 @@ class Login extends Component {
             <div className="login">
             <div className="login-header">
                 
-                <h1>聚诚品后台管理系统</h1>
+                <h1>聚诚品后台管理系统__王者荣耀</h1>
             </div>
             <div className="login-content">
                 <div></div>
