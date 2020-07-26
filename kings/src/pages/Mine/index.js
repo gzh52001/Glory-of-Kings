@@ -79,7 +79,7 @@ class Mine extends Component {
                     <div style={{ background: "#fff" }}>
                         <div className='header'>
                             <a style={{ display: 'block' }}>
-                                <img src='https://shp.qlogo.cn/daoju/9999/9999_1/0' />
+                                <img src='https://pic3.zhimg.com/80/v2-9940a44f0a395981212f7b7d47997296_720w.jpg' />
                                 <p>{title}</p>
                             </a>
                         </div>
