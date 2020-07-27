@@ -1,5 +1,6 @@
 # Glory-of-Kings
 * 项目名称
+  
   * 王者荣耀周边商称
 * 演示
   * 官网	 https://m.mall.qq.com/pvpmall/ 
@@ -7,6 +8,7 @@
     *  前端：http://118.190.206.105:3000/Home    
     *  后端：http://118.190.206.105:3005/login
 * git仓库地址
+  
   * https://github.com/gzh52001/Glory-of-Kings.git
 * 团队与分工
   * 格式：组长：邓乐奇，成员：刘光福,梁时乐，曹华强
@@ -58,7 +60,8 @@
     * 路由入口
   * server 开启静态资源服务 
 * 项目页面截图
-  * 
+  
+   ![Image]( [https://github.com/DENGLEQI/xiaomi/blob/master/img/1%20(1).png](https://github.com/DENGLEQI/xiaomi/blob/master/img/1 (1).png) ) 
 
 
 
