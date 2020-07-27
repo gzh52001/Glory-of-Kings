@@ -2,14 +2,17 @@
 * 项目名称
   
   * 王者荣耀周边商称
+  
 * 演示
   * 官网	 https://m.mall.qq.com/pvpmall/ 
   * 上线网址    
     *  前端：http://118.190.206.105:3000/Home    
     *  后端：http://118.190.206.105:3005/login
+  
 * git仓库地址
   
   * https://github.com/gzh52001/Glory-of-Kings.git
+  
 * 团队与分工
   * 格式：组长：邓乐奇，成员：刘光福,梁时乐，曹华强
   * 负责模块说明
@@ -17,7 +20,9 @@
     * 曹华强    前端页面
     * 梁时乐   后台页面
     * 刘光福   接口
+  
 * 项目目录说明
+
 * 前端
   * assets  本地图片
   * utils  封装好的ajax请求
@@ -30,6 +35,7 @@
     * Mine     我的
     * Reg    注册
     * Shopcart    购物车
+  
 * 后台
   * components
     * Header 头部
@@ -46,6 +52,7 @@
     * Welcome 欢迎界面
   * utils
     * https 封装ajax
+  
 * 接口
   * db 数据库
     * mysql 连接数据库
@@ -59,9 +66,22 @@
       * userRouter 用户模块接口
     * 路由入口
   * server 开启静态资源服务 
+  
 * 项目页面截图
   
-   ![Image]( [https://github.com/DENGLEQI/xiaomi/blob/master/img/1%20(1).png](https://github.com/DENGLEQI/xiaomi/blob/master/img/1 (1).png) ) 
+   ![Image]( https://raw.githubusercontent.com/DENGLEQI/xiaomi/master/img/1.png )
+   
+   ![Image](  https://raw.githubusercontent.com/DENGLEQI/xiaomi/master/img/2.png )
+   
+   ![Image](  https://raw.githubusercontent.com/DENGLEQI/xiaomi/master/img/3.png  )
+   
+   ![Image](  https://raw.githubusercontent.com/DENGLEQI/xiaomi/master/img/4.png  )
+   
+   ![Image](  https://raw.githubusercontent.com/DENGLEQI/xiaomi/master/img/5.png  )
+   
+   ![Image](  https://raw.githubusercontent.com/DENGLEQI/xiaomi/master/img/6.png  )
+   
+   
 
 
 
