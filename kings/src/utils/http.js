@@ -2,11 +2,11 @@
  * 封装ajax请求
  * fetch(url,options)
  */
-const baseUrl = process.env.NODE_ENV === 'development' ? 'http://10.3.141.53:3009' : 'http://aoxie.com'
+const baseUrl = process.env.NODE_ENV === 'development' ? 'http://118.190.206.105:3009' : 'http://118.190.206.105:3009'
 
 export async function request(url, data = {}, options = {}) {
     url = baseUrl + url;
-    if(options.method){
+    if (options.method) {
         options.method = options.method.toLowerCase();
     }
     if (options.method === 'get' || options.get === undefined) {
@@ -23,29 +23,29 @@ export async function request(url, data = {}, options = {}) {
     return await fetch(url, {
         ...options,
         data,
-        
+
     }).then(res => res.json());
-    
+
 }
 
-export function get(url, data, options){
+export function get(url, data, options) {
     return request(url, data, options)
 }
 
 
-export function post(url, data, options = {method:'post'}){
+export function post(url, data, options = { method: 'post' }) {
     return request(url, data, options)
 }
 
-export function remove(url, data, options = {method:'delete'}){
+export function remove(url, data, options = { method: 'delete' }) {
     return request(url, data, options)
 }
 
-export function put(url, data, options = {method:'put'}){
+export function put(url, data, options = { method: 'put' }) {
     return request(url, data, options)
 }
 
-export function patch(url, data, options =  {method:'patch'}){
+export function patch(url, data, options = { method: 'patch' }) {
     return request(url, data, options)
 }
 

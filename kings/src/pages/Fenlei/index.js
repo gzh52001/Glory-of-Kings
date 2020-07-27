@@ -33,8 +33,8 @@ class List extends React.Component {
         });
     }
 
-     // 发送请求拿数据
-     componentWillMount() {
+    // 发送请求拿数据
+    componentWillMount() {
         const request = http.get('/shop/shoplist')
         request.then(res => {
             if (res.flag) {
